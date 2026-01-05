@@ -92,6 +92,16 @@ This is the MOST CRITICAL assessment for longer documents (>1000 words). It dete
 - What's the dependency chain between concepts?
 - What conceptual relationships are implied but not made explicit in structure?
 
+**Cognitive Layering (for progressive content):**
+
+For content where understanding builds across sections:
+- What mental model does each section construct?
+- Does each section's mental model require only what came before?
+- Where might readers skip ahead and get confused from missing prerequisites?
+- Where are cognitive bridges needed at transitions?
+
+Skip for modular, reference, or single-section content.
+
 **Depth vs Breadth:**
 - Is this trying to cover too much without sufficient depth?
 - Which concepts deserve more depth vs which are complete?

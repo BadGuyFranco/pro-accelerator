@@ -58,6 +58,11 @@ Every tool must have:
 
 ## Key Principles
 
+**Quality Standard: Prompt Author**
+- All tools must follow Prompt Author canons (`/pro accelerator/tools/Prompt Author/`)
+- Before finalizing any tool, review against Prompt Author's quality checks
+- Use Prompt Review Process for auditing existing tools
+
 **Single Source of Truth**
 - Each piece of information exists in exactly one place
 - Workspace AGENTS.md references tools, doesn't duplicate their instructions

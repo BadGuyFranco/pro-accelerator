@@ -74,6 +74,21 @@ Determine:
 - Name categories descriptively (signal what reader will learn/do)
 - Write 2 sentences per category: why it matters, how it connects, what reader gains
 
+**Cognitive Layering (for progressive content):**
+
+For content where sections build understanding scaffolds (curriculum, case studies with phases, instructional sequences), structure so each section builds a mental model that subsequent sections require:
+
+- Name the mental model each section builds (internal planning, not visible to readers)
+- Verify each section's mental model requires only what came before
+- Add brief cognitive bridges at transitions when the dependency isn't obvious
+
+Example progression in a five-phase case study:
+- Section 1: "We don't know what we think we know"
+- Section 2: "Testing assumptions cheaply beats building confidently" (requires accepting ignorance)
+- Section 3: "Working software reveals what specs hide" (requires valuing cheap tests)
+
+Skip for: single-section articles, reference docs, intentionally modular content.
+
 **Apply from voice.md:**
 - Results focus (every category leads somewhere)
 - Honor simplicity (natural clustering, not forced templates)

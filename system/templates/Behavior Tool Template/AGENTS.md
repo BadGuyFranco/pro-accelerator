@@ -86,12 +86,15 @@ This prevents user-provided content from being confused with tool instructions.
 5. Structure main sections around what your tool actually does
 6. Include Limitations to set proper expectations
 7. **Update cursor rules:** Add to routing table in `.cursor/rules/Always Apply.mdc`
+8. **Quality review:** Verify against Prompt Author quality checks before finalizing
 
 **Behavior tools vs Script tools:**
 - Behavior tools = Instructions and methodology (this template)
 - Script tools = Python/Node scripts with APIs and dependencies
 
 **Pattern reference:** See Content Author, Problem Solver, and Prompt Author for working examples of behavior tools.
+
+**Quality standard:** `/pro accelerator/tools/Prompt Author/AGENTS.md`
 
 **Delete this section when done.**
 

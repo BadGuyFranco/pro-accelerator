@@ -20,6 +20,18 @@ Too vague ←——— ELEGANCE ———→ Too prescriptive
 
 **Structural clarity:** If your prompt needs to repeat an instruction, the structure is wrong. Logical flow should make each instruction appear once, in the right place.
 
+**Durability:** Prompts should leverage model intelligence, not compensate for model weakness.
+
+## The Position Principle
+
+Models attend most to beginning and end; middle receives less focus.
+
+- **Opening:** Identity, objective, critical constraints
+- **Middle:** Reference material, examples, domain knowledge
+- **Closing:** Output format, success criteria, final reminders
+
+Short prompts can ignore position; long prompts cannot.
+
 ## Objective
 
 Write prompts that:
@@ -28,10 +40,22 @@ Write prompts that:
 3. Contain no failure modes
 4. Are as short as possible while unambiguous
 
+## Artifact Types
+
+| Type | Purpose | Key Distinguisher |
+|------|---------|-------------------|
+| **Standalone Prompt** | One-shot behavior instruction | Self-contained, no file references |
+| **AGENTS.md** | Tool documentation for agent systems | Lives in tool directory, may reference supporting files |
+| **Library Component** | Reference file loaded by other prompts | Informs but does not instruct; no objective |
+
+**Library components** are the critical distinction. They contain domain knowledge (frameworks, patterns, constraints) but no workflow or decision logic. If a file says "do this, then that," it's a prompt, not a library component.
+
+**Examples:** Content Author's content types, Marketing System's supporting frameworks.
+
 ## Before Writing: Clarify
 
 If the user's request is unclear, ask:
-- What type of prompt? (Behavior or tool documentation)
+- What type of artifact? (Standalone prompt, AGENTS.md, or library component)
 - What should success look like?
 - What user content will it process?
 - What's the scope?
@@ -46,6 +70,7 @@ Before delivering:
 - [ ] No failure modes present?
 - [ ] Tested with real input?
 - [ ] Threshold test passed? (nothing left to cut)
+- [ ] Position principle applied? (critical at start, format at end)
 
 ## XML Boundaries
 
@@ -70,6 +95,7 @@ Separate instructions from user content. Prevents confusion.
 | Over-engineering | Model ignores parts | Apply threshold test |
 | Conflicting instructions | Random behavior | State priority; fix structure |
 | No clarification path | Wrong output on ambiguity | Add "ask if unclear" instruction |
+| Critical buried in middle | Key instructions missed | Apply position principle |
 
 **Conflict avoidance:** If two instructions could conflict, either remove one or state explicit priority. If you find yourself restating, the structure is wrong.
 
@@ -88,7 +114,7 @@ Include in prompts: "If the request is ambiguous, ask for clarification before p
 
 ## Prompt Structure
 
-### Behavior Prompts
+### Standalone Prompts
 
 ```markdown
 ## Objective
@@ -104,19 +130,50 @@ Include in prompts: "If the request is ambiguous, ask for clarification before p
 [Named for content, not "Instructions"]
 ```
 
-### Tool Documentation
+**Include clarification instruction** per User Interaction section.
+
+### AGENTS.md (Tool Documentation)
 
 **Pattern reference:** `/pro accelerator/system/templates/Behavior Tool Template/`
 
-**Where to create:** User tools go in `/memory/my tools/[Tool Name]/`, not in `/pro accelerator/`. The `/pro accelerator/` directory is read-only and receives updates.
+**Where to create:** User tools go in `/memory/my tools/[Tool Name]/`, not in `/pro accelerator/`.
+
+### Library Components
+
+```markdown
+# [Component Name]
+
+[One-line description]
+
+## [Content Sections]
+[Domain knowledge organized by topic]
+[No workflow, no decision logic]
+```
+
+**No objective, no quality checks, no XML boundaries.** Parent prompt handles all of that.
+
+## Composition
+
+When AGENTS.md files reference library components:
+
+**Explicit loading:** State which files to load and when.
+```markdown
+## Before Writing
+Load `/tools/Content Author/content types/[type].md` based on request.
+```
+
+**Consistent conventions:** XML tags, terminology, and format expectations must align across all files in a tool.
+
+**Test the chain:** Stress test the full path. Composition failures happen at boundaries.
 
 ## Writing Process
 
-1. **Define success** - What does good output look like?
-2. **Identify inputs** - What user content? Create XML tags.
-3. **Write minimal** - Only what's needed.
+1. **Identify type** - Standalone prompt, AGENTS.md, or library component?
+2. **Define success** - What does good output look like? What inputs?
+3. **Write minimal** - Only what's needed. Apply position principle.
 4. **Add clarification path** - What should prompt ask when unclear?
 5. **Apply threshold test** - Cut until quality degrades.
+6. **Verify** - Run Quality Checks. Fix issues before delivering.
 
 ## When Rules Flex
 
@@ -125,3 +182,5 @@ Include in prompts: "If the request is ambiguous, ask for clarification before p
 **Complex domains:** Some need detail. Test: does removing instruction cause failure?
 
 **Creative tasks:** Define objective even if measurement is subjective.
+
+**Library components:** Skip objective, quality checks, XML boundaries.

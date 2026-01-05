@@ -152,12 +152,15 @@ pip3 install -r requirements.txt
 6. Add real troubleshooting based on testing
 7. Be specific in Tips based on actual usage
 8. **Update cursor rules:** Add to routing table in `.cursor/rules/Always Apply.mdc`
+9. **Quality review:** Verify against Prompt Author quality checks before finalizing
 
 **Script tool vs Behavior tool:**
 - Script tools = Python/Node scripts with APIs and dependencies (this template)
 - Behavior tools = Instructions and methodology only
 
 **Pattern reference:** See Image Generator, Video Generator, and Browser Control for working examples.
+
+**Quality standard:** `/pro accelerator/tools/Prompt Author/AGENTS.md`
 
 **Delete this section when done.**
 

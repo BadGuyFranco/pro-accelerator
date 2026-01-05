@@ -160,6 +160,7 @@
 
     <div class="controls">
         <button onclick="resetView()">Reset View</button>
+        <button onclick="exportSVG()">Export SVG</button>
     </div>
 
     <div class="visualization-container">
@@ -364,6 +365,54 @@
 
         function resetView() {
             // Already at default view, but could implement zoom if needed
+        }
+
+        // SVG Export function
+        function exportSVG() {
+            const svgElement = document.getElementById('fishbone');
+            const clone = svgElement.cloneNode(true);
+            
+            // Get computed styles
+            const computedStyles = getComputedStyle(document.documentElement);
+            const cssVars = {
+                '--primary': computedStyles.getPropertyValue('--primary').trim(),
+                '--primary-light': computedStyles.getPropertyValue('--primary-light').trim(),
+                '--text': computedStyles.getPropertyValue('--text').trim(),
+                '--text-muted': computedStyles.getPropertyValue('--text-muted').trim(),
+                '--category-1': computedStyles.getPropertyValue('--category-1').trim(),
+                '--category-2': computedStyles.getPropertyValue('--category-2').trim(),
+                '--category-3': computedStyles.getPropertyValue('--category-3').trim(),
+                '--category-4': computedStyles.getPropertyValue('--category-4').trim(),
+                '--category-5': computedStyles.getPropertyValue('--category-5').trim(),
+                '--category-6': computedStyles.getPropertyValue('--category-6').trim()
+            };
+            
+            // Add inline styles
+            const styleElement = document.createElementNS('http://www.w3.org/2000/svg', 'style');
+            styleElement.textContent = `
+                .spine { stroke: ${cssVars['--text']}; stroke-width: 3px; fill: none; }
+                .major-bone { stroke-width: 2px; fill: none; }
+                .minor-bone { stroke-width: 1.5px; fill: none; }
+                .category-label { font-family: system-ui, -apple-system, sans-serif; font-size: 16px; font-weight: 600; }
+                .cause-label { font-family: system-ui, -apple-system, sans-serif; font-size: 13px; fill: ${cssVars['--text-muted']}; }
+                .effect-box { fill: ${cssVars['--primary']}; stroke: ${cssVars['--primary-light']}; stroke-width: 3px; }
+                .effect-text { fill: white; font-family: system-ui, -apple-system, sans-serif; font-size: 18px; font-weight: 600; }
+            `;
+            clone.insertBefore(styleElement, clone.firstChild);
+            
+            const serializer = new XMLSerializer();
+            let svgString = serializer.serializeToString(clone);
+            svgString = '<?xml version="1.0" encoding="UTF-8"?>\n' + svgString;
+            
+            const blob = new Blob([svgString], { type: 'image/svg+xml' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'fishbone.svg';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
         }
     </script>
 </body>

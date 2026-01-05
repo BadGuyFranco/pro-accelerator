@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Concept Map - Cytoscape.js</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.28.1/cytoscape.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape-svg/0.4.0/cytoscape-svg.min.js"></script>
     <style>
         :root {
             --primary: #2563eb;
@@ -187,6 +188,7 @@
         </div>
         <button onclick="resetView()">Reset View</button>
         <button onclick="fitToView()">Fit to View</button>
+        <button onclick="exportSVG()">Export SVG</button>
     </div>
 
     <div class="controls">
@@ -460,6 +462,25 @@
 
         function fitToView() {
             cy.fit(null, 50);
+        }
+
+        // SVG Export function
+        function exportSVG() {
+            const svgContent = cy.svg({
+                full: true,
+                scale: 1,
+                bg: '#ffffff'
+            });
+            
+            const blob = new Blob([svgContent], { type: 'image/svg+xml' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'concept-map.svg';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
         }
 
         // Initial fit

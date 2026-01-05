@@ -195,17 +195,37 @@ Reusable library templates for complex visualizations:
 - See `scripts/LIBRARY-RECOMMENDATIONS.md` for library selection rationale
 
 **Available templates:**
-- ✅ `concept-map-cytoscape.html` - Network graphs and concept maps
-- ✅ `flow-diagram-dagre.html` - Sequential processes and workflows
-- ✅ `hierarchy-d3.html` - Tree structures (vertical, horizontal, radial)
-- ✅ `mindmap-d3.html` - Radial layouts for brainstorming
+- ✅ `concept-map-cytoscape.html` - Network graphs and concept maps (SVG export)
+- ✅ `flow-diagram-dagre.html` - Sequential processes and workflows (SVG export)
+- ✅ `hierarchy-d3.html` - Tree structures (vertical, horizontal, radial) (SVG export)
+- ✅ `mindmap-d3.html` - Radial layouts for brainstorming (SVG export)
 - ✅ `timeline-vis.html` - Temporal sequences and project timelines
-- ✅ `fishbone-d3.html` - Root cause analysis diagrams
+- ✅ `fishbone-d3.html` - Root cause analysis diagrams (SVG export)
+
+## SVG Export
+
+All library templates (except Timeline) include an **Export SVG** button that downloads a standalone SVG file:
+
+| Template | SVG Export | Notes |
+|----------|------------|-------|
+| Concept Map | Yes | Uses cytoscape-svg extension |
+| Flow Diagram | Yes | Inlines computed styles |
+| Hierarchy | Yes | Inlines computed styles |
+| Mind Map | Yes | Inlines computed styles |
+| Fishbone | Yes | Inlines computed styles |
+| Timeline | No | Renders to HTML/canvas, not SVG |
+
+**Export behavior:**
+- Click "Export SVG" button to download
+- SVG includes inlined styles for standalone viewing
+- Colors and fonts are embedded (no external dependencies)
+- Suitable for editing in vector graphics software (Illustrator, Inkscape, Figma)
 
 ## Configuration
 
 Libraries loaded via CDN (no installation required):
 - Cytoscape.js 3.28.1 (concept maps)
+- cytoscape-svg 0.4.0 (SVG export for concept maps)
 - D3.js (hierarchies, custom layouts)
 - ELK.js (automatic hierarchical layout)
 - vis.js (timelines)

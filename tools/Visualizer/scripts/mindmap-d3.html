@@ -157,6 +157,7 @@
         <button onclick="expandAll()">Expand All</button>
         <button onclick="collapseAll()">Collapse All</button>
         <button onclick="resetView()">Reset View</button>
+        <button onclick="exportSVG()">Export SVG</button>
     </div>
 
     <div class="visualization-container">
@@ -352,6 +353,61 @@
             svg.transition()
                 .duration(750)
                 .call(zoom.transform, d3.zoomIdentity);
+        }
+
+        // SVG Export function
+        function exportSVG() {
+            const svgElement = document.getElementById('mindmap');
+            const clone = svgElement.cloneNode(true);
+            
+            // Get computed styles
+            const computedStyles = getComputedStyle(document.documentElement);
+            const cssVars = {
+                '--primary': computedStyles.getPropertyValue('--primary').trim(),
+                '--text': computedStyles.getPropertyValue('--text').trim(),
+                '--branch-1': computedStyles.getPropertyValue('--branch-1').trim(),
+                '--branch-2': computedStyles.getPropertyValue('--branch-2').trim(),
+                '--branch-3': computedStyles.getPropertyValue('--branch-3').trim(),
+                '--branch-4': computedStyles.getPropertyValue('--branch-4').trim(),
+                '--branch-5': computedStyles.getPropertyValue('--branch-5').trim()
+            };
+            
+            // Add inline styles
+            const styleElement = document.createElementNS('http://www.w3.org/2000/svg', 'style');
+            styleElement.textContent = `
+                .node circle { stroke: white; stroke-width: 3px; }
+                .node text { font-family: system-ui, -apple-system, sans-serif; font-size: 14px; font-weight: 500; }
+                .node.center text { font-size: 18px; font-weight: 600; }
+                .link { fill: none; stroke-width: 2px; opacity: 0.6; }
+            `;
+            clone.insertBefore(styleElement, clone.firstChild);
+            
+            // Replace CSS variables in style attributes
+            clone.querySelectorAll('[style*="var("]').forEach(el => {
+                let style = el.getAttribute('style');
+                style = style.replace(/var\(--primary\)/g, cssVars['--primary']);
+                style = style.replace(/var\(--text\)/g, cssVars['--text']);
+                style = style.replace(/var\(--branch-1\)/g, cssVars['--branch-1']);
+                style = style.replace(/var\(--branch-2\)/g, cssVars['--branch-2']);
+                style = style.replace(/var\(--branch-3\)/g, cssVars['--branch-3']);
+                style = style.replace(/var\(--branch-4\)/g, cssVars['--branch-4']);
+                style = style.replace(/var\(--branch-5\)/g, cssVars['--branch-5']);
+                el.setAttribute('style', style);
+            });
+            
+            const serializer = new XMLSerializer();
+            let svgString = serializer.serializeToString(clone);
+            svgString = '<?xml version="1.0" encoding="UTF-8"?>\n' + svgString;
+            
+            const blob = new Blob([svgString], { type: 'image/svg+xml' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'mindmap.svg';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
         }
 
         // Initial render

@@ -158,6 +158,7 @@
     <div class="controls">
         <button onclick="resetZoom()">Reset Zoom</button>
         <button onclick="fitToView()">Fit to View</button>
+        <button onclick="exportSVG()">Export SVG</button>
     </div>
 
     <div class="visualization-container">
@@ -379,6 +380,56 @@
             svg.transition()
                 .duration(750)
                 .call(zoom.transform, d3.zoomIdentity);
+        }
+
+        // SVG Export function
+        function exportSVG() {
+            const svgElement = document.getElementById('flowchart');
+            const clone = svgElement.cloneNode(true);
+            
+            // Get computed styles
+            const computedStyles = getComputedStyle(document.documentElement);
+            const cssVars = {
+                '--primary': computedStyles.getPropertyValue('--primary').trim(),
+                '--node-bg': computedStyles.getPropertyValue('--node-bg').trim(),
+                '--decision-bg': computedStyles.getPropertyValue('--decision-bg').trim(),
+                '--end-bg': computedStyles.getPropertyValue('--end-bg').trim(),
+                '--text-muted': computedStyles.getPropertyValue('--text-muted').trim(),
+                '--text': computedStyles.getPropertyValue('--text').trim()
+            };
+            
+            // Add inline styles
+            const styleElement = document.createElementNS('http://www.w3.org/2000/svg', 'style');
+            styleElement.textContent = `
+                .node rect, .node polygon { stroke: #fff; stroke-width: 2px; }
+                .node text { fill: white; font-family: system-ui, -apple-system, sans-serif; font-size: 14px; font-weight: 500; }
+                .edge path { stroke: ${cssVars['--text-muted']}; stroke-width: 2px; fill: none; }
+                .edge text { fill: ${cssVars['--text']}; font-family: system-ui, -apple-system, sans-serif; font-size: 12px; font-weight: 500; }
+            `;
+            clone.insertBefore(styleElement, clone.firstChild);
+            
+            // Replace CSS variables with actual colors in the clone
+            clone.querySelectorAll('[fill^="var("]').forEach(el => {
+                const fill = el.getAttribute('fill');
+                if (fill.includes('--primary')) el.setAttribute('fill', cssVars['--primary']);
+                if (fill.includes('--node-bg')) el.setAttribute('fill', cssVars['--node-bg']);
+                if (fill.includes('--decision-bg')) el.setAttribute('fill', cssVars['--decision-bg']);
+                if (fill.includes('--end-bg')) el.setAttribute('fill', cssVars['--end-bg']);
+            });
+            
+            const serializer = new XMLSerializer();
+            let svgString = serializer.serializeToString(clone);
+            svgString = '<?xml version="1.0" encoding="UTF-8"?>\n' + svgString;
+            
+            const blob = new Blob([svgString], { type: 'image/svg+xml' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'flow-diagram.svg';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
         }
 
         // Initial fit

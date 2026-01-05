@@ -8,13 +8,16 @@
 
 ```
 1. Triage      →  Salvage or rewrite?
-2. Audit       →  Check against AGENTS.md criteria
-3. Diagnose    →  Locate problems, determine fixes
-4. Present     →  One observation at a time, get user choice
-5. Verify      →  Did changes improve the prompt?
+2. Stress Test →  Run realistic scenario, find where it breaks
+3. Audit       →  Check against AGENTS.md criteria
+4. Diagnose    →  Locate problems, describe failure scenarios
+5. Present     →  One observation at a time, get user choice
+6. Verify      →  Did changes improve the prompt?
 ```
 
 ## Step 1: Triage
+
+**First:** Identify artifact type (standalone prompt, AGENTS.md, or library component). Review criteria differ.
 
 **Salvageable:** Has identifiable objective, core structure exists, issues are localized.
 
@@ -22,18 +25,33 @@
 
 If rewrite needed: Stop. Rebuild using AGENTS.md Writing Process.
 
-## Step 2: Audit
+## Step 2: Stress Test
+
+Before auditing, run one realistic request through the prompt system end-to-end. Trace exactly what happens:
+- What gets loaded?
+- What guidance does the prompt provide?
+- Where is guidance unclear, conflicting, or missing?
+- What could go wrong?
+
+**Required output:** Describe at least one scenario where the current prompt could produce wrong or inconsistent output.
+
+If you can't identify any failure points, either the prompt is excellent or you haven't tried hard enough. Try a harder scenario.
+
+**This step prevents lazy reviewing.** Cosmetic issues (whitespace, minor redundancy) are easy to spot. Effectiveness issues require tracing through actual usage.
+
+## Step 3: Audit
 
 Check the prompt against AGENTS.md:
 
-1. **Elegance Principle** - Check all criteria in AGENTS.md (threshold test, communication insight, structural clarity)
-2. **Objective** - Is it evaluable? Can you determine success/failure from output?
-3. **XML Boundaries** - Is all user content wrapped?
-4. **Failure Modes** - Scan AGENTS.md table. Mark which are present.
+1. **Elegance Principle** - Threshold test, communication insight, structural clarity, durability
+2. **Position Principle** - Critical instructions at start? Format/success at end? (Skip for short prompts)
+3. **Objective** - Is it evaluable? Can you determine success/failure from output?
+4. **XML Boundaries** - Is all user content wrapped?
+5. **Failure Modes** - Scan AGENTS.md table. Mark which are present.
 
-**Priority order:** Objective → Boundaries → Failure modes → Elegance
+**Priority order:** Objective → Boundaries → Failure modes → Position → Elegance
 
-## Step 3: Diagnose
+## Step 4: Diagnose
 
 For each issue found:
 
@@ -41,9 +59,12 @@ For each issue found:
 |----------|--------|
 | Where? | Line/section where problem occurs |
 | What? | Specific cause |
+| Failure scenario | Realistic situation where this causes wrong output |
 | Fix? | Minimal change that resolves it |
 
-## Step 4: Present
+**Critical:** If you cannot describe a failure scenario, the issue is cosmetic. Deprioritize it or drop it entirely. Formatting issues without behavioral impact are low priority.
+
+## Step 5: Present
 
 ### Format
 
@@ -53,6 +74,8 @@ For each:
 
 ```
 **Observation [N] of [X]: [Title]**
+
+Failure scenario: [Realistic situation where this causes wrong output]
 
 Issue: [What's wrong]
 
@@ -72,13 +95,14 @@ Implement chosen option. Move to next.
 
 After 5 changes: "Continue, re-assess, or stop?"
 
-## Step 5: Verify
+## Step 6: Verify
 
 After all observations:
 
 - Did changes fix problems without creating new ones?
 - Is prompt the right length? (shorter if bloated, longer if incomplete)
 - Does it pass AGENTS.md Quality Checks?
+- Re-run stress test: Does the failure scenario now produce correct output?
 
 If issues found: Present as new observations, fix, re-verify.
 
@@ -96,13 +120,15 @@ Only if prompts coordinate (handoffs, shared workflows) and inconsistencies woul
 
 ## Process
 
-1. **Individual first** - Complete standard review for each prompt.
+1. **Stress test the system** - Run a realistic multi-step request through the full prompt chain. Trace handoffs. Note where guidance is unclear or missing.
 
-2. **Cross-prompt checks:**
+2. **Individual review** - Complete standard review for each prompt, informed by stress test findings.
+
+3. **Cross-prompt checks:**
    - Terms consistent across prompts?
    - Handoffs clear?
    - Output formats compatible with downstream inputs?
    - Gaps or overlaps?
    - XML conventions consistent?
 
-3. **Present** - Use standard format. Prioritize by system coherence impact.
+4. **Present** - Use standard format. Prioritize by system coherence impact.
