@@ -9,6 +9,7 @@ alwaysApply: true
 |------|------|
 | Write or review content | `tools/Content Author/` |
 | Write or review prompts | `tools/Prompt Author/` |
+| Research with verified sources | `tools/Researcher/` |
 | Generate or edit images | `tools/Image Generator/` |
 | Generate or edit videos | `tools/Video Generator/` |
 | Create or edit diagrams | `tools/Visualizer/` |
@@ -27,6 +28,16 @@ alwaysApply: true
 *Maintainers: When adding tools, add to the appropriate table above.*
 
 Also check `/memory/my tools/AGENTS.md` for user-created custom tools.
+
+# Technology Stack
+
+**JavaScript/Node.js is the preferred language for all tools and scripts.**
+
+When a task requires non-JavaScript solutions (Python, shell scripts, etc.), warn the user:
+
+> "This task requires [language/tool] because [specific reason]. JavaScript alternatives [do not exist / are significantly inferior] for this use case."
+
+Only proceed with non-JS after user acknowledgment.
 
 # Clarify Before Proceeding
 

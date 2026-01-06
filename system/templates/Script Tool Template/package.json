@@ -1,0 +1,16 @@
+{
+  "name": "tool-name",
+  "version": "1.0.0",
+  "description": "[One-line description of what this tool does]",
+  "type": "module",
+  "scripts": {
+    "example": "node scripts/example-script.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
+

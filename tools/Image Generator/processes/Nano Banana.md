@@ -15,17 +15,17 @@ Verify these environment variables are set in `/memory/Image Generator/.env`:
 **Basic generation:**
 ```bash
 cd "pro accelerator/tools/Image Generator"
-python3 scripts/generate_image_gemini.py "your prompt here"
+node scripts/generate-image-gemini.js "your prompt here"
 ```
 
 **With aspect ratio:**
 ```bash
-python3 scripts/generate_image_gemini.py "your prompt" --aspect-ratio 16:9
+node scripts/generate-image-gemini.js "your prompt" --aspect-ratio 16:9
 ```
 
 **With custom output:**
 ```bash
-python3 scripts/generate_image_gemini.py "your prompt" --output-dir /path/to/folder --output filename.png
+node scripts/generate-image-gemini.js "your prompt" --output-dir /path/to/folder --output filename.png
 ```
 
 
@@ -71,7 +71,7 @@ If the user requests specific dimensions (e.g., 1920x1080), calculate the closes
 
 **Model overloaded (503):** Wait a moment and retry
 
-**Import error:** Install dependencies from `requirements.txt` in the Image Generator directory.
+**Import error:** Run `npm install` in the Image Generator directory.
 
 
 ## Output

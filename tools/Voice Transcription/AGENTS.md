@@ -7,12 +7,12 @@ Transcribe voice recordings and phone calls locally on your machine using OpenAI
 ## Quick Start
 
 ```bash
-python transcribe_audio.py <path_to_audio_file>
+node transcribe-audio.js <path_to_audio_file>
 ```
 
 **With specific model:**
 ```bash
-python transcribe_audio.py recording.m4a --model base
+node transcribe-audio.js recording.m4a --model base
 ```
 
 **If the command fails,** see "Troubleshooting" section below.
@@ -34,7 +34,7 @@ python transcribe_audio.py recording.m4a --model base
 ### Basic Usage
 
 ```bash
-python transcribe_audio.py <path_to_audio_file>
+node transcribe-audio.js <path_to_audio_file>
 ```
 
 ### Model Selection
@@ -43,35 +43,33 @@ Choose your Whisper model size (trade-off between speed and accuracy):
 
 ```bash
 # Fastest, good for quick transcriptions
-python transcribe_audio.py recording.m4a --model tiny
+node transcribe-audio.js recording.m4a --model tiny
 
 # Default - balanced speed and accuracy
-python transcribe_audio.py recording.m4a --model base
+node transcribe-audio.js recording.m4a --model base
 
 # Better accuracy
-python transcribe_audio.py recording.m4a --model small
+node transcribe-audio.js recording.m4a --model small
 
 # High accuracy (recommended for important meetings)
-python transcribe_audio.py recording.m4a --model medium
-
-# Best accuracy (slow but most precise)
-python transcribe_audio.py recording.m4a --model large
+node transcribe-audio.js recording.m4a --model medium
 ```
 
 ### Model Comparison
 
-| Model  | Size   | RAM   | Speed      | Accuracy |
-|--------|--------|-------|------------|----------|
-| tiny   | ~75MB  | ~1GB  | Fastest    | Good     |
-| base   | ~140MB | ~1GB  | Fast       | Better   | ⭐ **Default**
-| small  | ~460MB | ~2GB  | Moderate   | Great    |
-| medium | ~1.5GB | ~5GB  | Slow       | Excellent|
-| large  | ~3GB   | ~10GB | Slowest    | Best     |
+| Model  | Speed      | Accuracy |
+|--------|------------|----------|
+| tiny   | Fastest    | Good     |
+| base   | Fast       | Better   | (Default)
+| small  | Moderate   | Great    |
+| medium | Slow       | Excellent|
+
+Note: The `large` model is not available in the Node.js version due to ONNX limitations.
 
 ### Example
 
 ```bash
-python transcribe_audio.py ~/Downloads/meeting_recording.m4a
+node transcribe-audio.js ~/Downloads/meeting_recording.m4a
 ```
 
 
@@ -147,7 +145,7 @@ Create a bash script:
 ```bash
 #!/bin/bash
 for file in /path/to/recordings/*.m4a; do
-    python transcribe_audio.py "$file" --model base
+    node transcribe-audio.js "$file" --model base
 done
 ```
 
@@ -182,11 +180,11 @@ A: No. Everything runs locally on your machine. Zero data leaves your computer.
 
 ### Setup Issues
 
-**Requirements:** Python 3.8+, 2-3GB disk space (dependencies + models), 4GB+ RAM
+**Requirements:** Node.js 18+, 2-3GB disk space (dependencies + models), 4GB+ RAM
 
-**Install dependencies:** Install from `requirements.txt` (see Setup section above).
+**Install dependencies:** Run `npm install` in the Voice Transcription directory.
 
-Models download automatically on first use to `~/.cache/whisper/`
+Models download automatically on first use to `~/.cache/huggingface/`
 
 ### Common Errors
 
@@ -198,11 +196,9 @@ Models download automatically on first use to `~/.cache/whisper/`
 
 **Out of memory:** Use smaller model, close other apps, process shorter segments
 
-**Python not found:** `brew install python3` (macOS) or download from python.org
+**Node not found:** Install Node.js from nodejs.org or use `brew install node` (macOS)
 
-**Module not found:** `pip3 install -r requirements.txt`
-
-**PyTorch errors:** `pip3 install torch torchaudio --upgrade`
+**Cannot find module:** Run `npm install` in the Voice Transcription directory
 
 **Model download failed:** Check internet, ensure `~/.cache/` is writable
 
@@ -212,7 +208,6 @@ Models download automatically on first use to `~/.cache/whisper/`
 |-------|-----|------|
 | tiny/base | 4GB | 2GB |
 | medium | 8GB | 5GB |
-| large | 16GB | 10GB |
 
 
 ## Cost

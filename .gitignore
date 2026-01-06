@@ -17,6 +17,9 @@
 # /anthony/
 # /[your-name]/
 
+# Cursor plans (local only, not tracked)
+.cursor/plans/
+
 # OS files
 .DS_Store
 Thumbs.db
@@ -54,3 +57,7 @@ tools/Video Generator/generated_videos/*
 # Archive directories (optional - remove these lines to include archives)
 **/zArchive/
 
+
+# Node.js
+node_modules/
+package-lock.json

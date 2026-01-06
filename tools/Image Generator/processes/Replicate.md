@@ -16,17 +16,17 @@ Verify these environment variables are set in `/memory/Image Generator/.env`:
 **Basic generation:**
 ```bash
 cd "pro accelerator/tools/Image Generator"
-python3 scripts/generate_image_replicate.py "your prompt here"
+node scripts/generate-image-replicate.js "your prompt here"
 ```
 
 **With custom output:**
 ```bash
-python3 scripts/generate_image_replicate.py "your prompt" output.png
+node scripts/generate-image-replicate.js "your prompt" output.png
 ```
 
 **With dimensions:**
 ```bash
-python3 scripts/generate_image_replicate.py "your prompt" output.png 1440 810
+node scripts/generate-image-replicate.js "your prompt" output.png 1440 810
 ```
 
 
@@ -73,7 +73,7 @@ The script automatically maps requested dimensions to the closest ratio:
 Use the background removal tool for headshots/products:
 
 ```bash
-python3 scripts/remove_background.py input.jpg output.png
+node scripts/remove-background.js input.jpg output.png
 ```
 
 - Removes background using AI (rembg model)
@@ -87,7 +87,7 @@ python3 scripts/remove_background.py input.jpg output.png
 
 **Rate limit (429):** Wait and retry
 
-**Import error:** Install dependencies from `requirements.txt` in the Image Generator directory.
+**Import error:** Run `npm install` in the Image Generator directory.
 
 
 ## Output

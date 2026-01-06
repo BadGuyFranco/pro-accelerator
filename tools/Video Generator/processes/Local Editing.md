@@ -1,23 +1,18 @@
 # Local Video Editing
 
-Edit videos locally using MoviePy without API calls.
+Edit videos locally using fluent-ffmpeg without API calls.
 
 
 ## Prerequisites
 
-Ensure MoviePy is installed:
-```bash
-pip3 install moviepy imageio-ffmpeg
-```
-
-FFmpeg is downloaded automatically on first use.
+Run `npm install` in the Video Generator directory. FFmpeg is bundled automatically.
 
 
 ## Basic Usage
 
 ```bash
 cd "pro accelerator/tools/Video Generator"
-python3 scripts/local_video_edit.py input.mp4 output.mp4 [options]
+node scripts/local-video-edit.js input.mp4 output.mp4 [options]
 ```
 
 
@@ -28,7 +23,7 @@ python3 scripts/local_video_edit.py input.mp4 output.mp4 [options]
 Extract a portion of video by specifying start and end times (in seconds):
 
 ```bash
-python3 scripts/local_video_edit.py input.mp4 output.mp4 --trim 5 15
+node scripts/local-video-edit.js input.mp4 output.mp4 --trim 5 15
 ```
 
 This extracts from 5 seconds to 15 seconds (10 second clip).
@@ -39,7 +34,7 @@ This extracts from 5 seconds to 15 seconds (10 second clip).
 Change video dimensions:
 
 ```bash
-python3 scripts/local_video_edit.py input.mp4 output.mp4 --resize 1280 720
+node scripts/local-video-edit.js input.mp4 output.mp4 --resize 1280 720
 ```
 
 
@@ -49,10 +44,10 @@ Speed up or slow down video:
 
 ```bash
 # 2x speed
-python3 scripts/local_video_edit.py input.mp4 output.mp4 --speed 2.0
+node scripts/local-video-edit.js input.mp4 output.mp4 --speed 2.0
 
 # Half speed (slow motion)
-python3 scripts/local_video_edit.py input.mp4 output.mp4 --speed 0.5
+node scripts/local-video-edit.js input.mp4 output.mp4 --speed 0.5
 ```
 
 
@@ -61,7 +56,7 @@ python3 scripts/local_video_edit.py input.mp4 output.mp4 --speed 0.5
 Add text to the video:
 
 ```bash
-python3 scripts/local_video_edit.py input.mp4 output.mp4 --text "Hello World" --text-position center
+node scripts/local-video-edit.js input.mp4 output.mp4 --text "Hello World" --text-position center
 ```
 
 Text positions: `top`, `center`, `bottom`
@@ -72,7 +67,7 @@ Text positions: `top`, `center`, `bottom`
 Strip audio from video:
 
 ```bash
-python3 scripts/local_video_edit.py input.mp4 output.mp4 --remove-audio
+node scripts/local-video-edit.js input.mp4 output.mp4 --remove-audio
 ```
 
 
@@ -81,7 +76,7 @@ python3 scripts/local_video_edit.py input.mp4 output.mp4 --remove-audio
 Join multiple videos together:
 
 ```bash
-python3 scripts/local_video_edit.py video1.mp4 video2.mp4 video3.mp4 --concat output.mp4
+node scripts/local-video-edit.js video1.mp4 video2.mp4 video3.mp4 --concat output.mp4
 ```
 
 
@@ -90,7 +85,7 @@ python3 scripts/local_video_edit.py video1.mp4 video2.mp4 video3.mp4 --concat ou
 Export frames as images:
 
 ```bash
-python3 scripts/local_video_edit.py input.mp4 --extract-frames ./frames/ --fps 1
+node scripts/local-video-edit.js input.mp4 --extract-frames ./frames/ --fps 1
 ```
 
 This extracts 1 frame per second.
@@ -101,7 +96,7 @@ This extracts 1 frame per second.
 Convert video to animated GIF:
 
 ```bash
-python3 scripts/local_video_edit.py input.mp4 output.gif --gif --fps 10
+node scripts/local-video-edit.js input.mp4 output.gif --gif --fps 10
 ```
 
 
@@ -128,17 +123,17 @@ python3 scripts/local_video_edit.py input.mp4 output.gif --gif --fps 10
 Multiple operations can be combined:
 
 ```bash
-python3 scripts/local_video_edit.py input.mp4 output.mp4 --trim 0 10 --resize 640 360 --speed 1.5
+node scripts/local-video-edit.js input.mp4 output.mp4 --trim 0 10 --resize 640 360 --speed 1.5
 ```
 
 
 ## Troubleshooting
 
-**FFmpeg not found:** MoviePy auto-downloads FFmpeg via imageio-ffmpeg. If issues persist, ensure all dependencies from `requirements.txt` are installed.
+**FFmpeg not found:** FFmpeg is bundled via ffmpeg-static. Run `npm install` to ensure it's installed.
 
 **Memory errors with large videos:** Process in smaller chunks or reduce resolution first.
 
-**Import error:** Install dependencies from `requirements.txt` in the Video Generator directory.
+**Import error:** Run `npm install` in the Video Generator directory.
 
 
 ## Output

@@ -24,19 +24,20 @@ This library uses **XML parsing** for maximum stability. Word documents (.docx) 
 
 ```bash
 cd "/pro accelerator/tools/Word Document Editor"
-pip3 list | grep -E "(python-docx|lxml|python-dotenv)"
+npm list
 ```
 
-Expected output should show:
-- `python-docx` (>=1.1.0)
-- `lxml` (>=5.0.0)
-- `python-dotenv` (>=1.0.0)
+Expected packages:
+- `jszip`
+- `@xmldom/xmldom`
+- `xpath`
+- `dotenv`
 
 ### Install Dependencies
 
 ```bash
 cd "/pro accelerator/tools/Word Document Editor"
-pip3 install -r requirements.txt
+npm install
 ```
 
 
@@ -44,13 +45,13 @@ pip3 install -r requirements.txt
 
 ### Create New Document
 
-**Script:** `scripts/create_document.py`
+**Script:** `scripts/create-document.js`
 
 **Usage:**
 ```bash
-python3 scripts/create_document.py path/to/new_document.docx
-python3 scripts/create_document.py path/to/new_document.docx --text "Initial content"
-python3 scripts/create_document.py path/to/new_document.docx --title "Document Title" --text "Content"
+node scripts/create-document.js path/to/new_document.docx
+node scripts/create-document.js path/to/new_document.docx --text "Initial content"
+node scripts/create-document.js path/to/new_document.docx --title "Document Title" --text "Content"
 ```
 
 **Options:**
@@ -63,11 +64,11 @@ Creates a minimal but valid Word document that can be opened in Microsoft Word a
 
 ### List Track Changes
 
-**Script:** `scripts/list_changes.py`
+**Script:** `scripts/list-changes.js`
 
 **Usage:**
 ```bash
-python3 scripts/list_changes.py path/to/document.docx
+node scripts/list-changes.js path/to/document.docx
 ```
 
 **Output:** Lists all tracked changes with:
@@ -98,11 +99,11 @@ Status: Pending
 
 ### Apply a Track Change
 
-**Script:** `scripts/apply_change.py`
+**Script:** `scripts/apply-change.js`
 
 **Usage:**
 ```bash
-python3 scripts/apply_change.py path/to/document.docx --change-id 1
+node scripts/apply-change.js path/to/document.docx --change-id 1
 ```
 
 **Safety:** This script REQUIRES explicit confirmation. It will:
@@ -119,11 +120,11 @@ python3 scripts/apply_change.py path/to/document.docx --change-id 1
 
 ### Reject a Track Change
 
-**Script:** `scripts/reject_change.py`
+**Script:** `scripts/reject-change.js`
 
 **Usage:**
 ```bash
-python3 scripts/reject_change.py path/to/document.docx --change-id 2
+node scripts/reject-change.js path/to/document.docx --change-id 2
 ```
 
 **Safety:** Same as apply_change - requires explicit confirmation.
@@ -135,11 +136,11 @@ python3 scripts/reject_change.py path/to/document.docx --change-id 2
 
 ### Add a New Tracked Change
 
-**Script:** `scripts/add_change.py`
+**Script:** `scripts/add-change.js`
 
 **Usage:**
 ```bash
-python3 scripts/add_change.py path/to/document.docx --text "New content" --type insertion
+node scripts/add-change.js path/to/document.docx --text "New content" --type insertion
 ```
 
 **Options:**
@@ -156,11 +157,11 @@ python3 scripts/add_change.py path/to/document.docx --text "New content" --type 
 
 ### List Comments
 
-**Script:** `scripts/list_comments.py`
+**Script:** `scripts/list-comments.js`
 
 **Usage:**
 ```bash
-python3 scripts/list_comments.py path/to/document.docx
+node scripts/list-comments.js path/to/document.docx
 ```
 
 **Output:** Lists all comments with:
@@ -173,11 +174,11 @@ python3 scripts/list_comments.py path/to/document.docx
 
 ### Add a Comment
 
-**Script:** `scripts/add_comment.py`
+**Script:** `scripts/add-comment.js`
 
 **Usage:**
 ```bash
-python3 scripts/add_comment.py path/to/document.docx --text "This needs review"
+node scripts/add-comment.js path/to/document.docx --text "This needs review"
 ```
 
 **Options:**
@@ -192,11 +193,11 @@ python3 scripts/add_comment.py path/to/document.docx --text "This needs review"
 
 ### Apply All Changes (Batch)
 
-**Script:** `scripts/apply_all_changes.py`
+**Script:** `scripts/apply-all-changes.js`
 
 **Usage:**
 ```bash
-python3 scripts/apply_all_changes.py path/to/document.docx
+node scripts/apply-all-changes.js path/to/document.docx
 ```
 
 **Safety:** Shows summary of ALL changes and requires explicit confirmation before applying any.
@@ -219,7 +220,7 @@ python3 scripts/apply_all_changes.py path/to/document.docx
 
 ## Troubleshooting
 
-**"Module not found" errors:** Install dependencies from `requirements.txt` (see Dependencies section above).
+**"Cannot find module" errors:** Run `npm install` in the Word Document Editor directory.
 
 **"Cannot read document" errors:**
 - Ensure file is a valid .docx file
@@ -246,29 +247,30 @@ python3 scripts/apply_all_changes.py path/to/document.docx
 - Comment references use `w:commentRangeStart`, `w:commentRangeEnd`, `w:commentReference` elements
 
 **Library Stack:**
-- `python-docx` - Base document manipulation
-- `lxml` - XML parsing for track changes
-- Direct XML manipulation for changes python-docx doesn't support
+- `jszip` - Reading/writing .docx (ZIP) files
+- `@xmldom/xmldom` - XML parsing and manipulation
+- `xpath` - XPath queries for finding elements
+- Direct XML manipulation for full track changes support
 
 
 ## Usage Patterns
 
 **Review workflow:**
-1. `list_changes.py` - See all changes
+1. `list-changes.js` - See all changes
 2. Review each change
-3. `apply_change.py` or `reject_change.py` - Process individually
-4. Or use `apply_all_changes.py` for batch (with confirmation)
+3. `apply-change.js` or `reject-change.js` - Process individually
+4. Or use `apply-all-changes.js` for batch (with confirmation)
 
 **AI editing workflow:**
-1. `add_change.py` - Add AI edits as tracked changes (defaults to "AIM" author)
-2. `add_comment.py` - Add AI comments for review (defaults to "AIM" author)
+1. `add-change.js` - Add AI edits as tracked changes (defaults to "AIM" author)
+2. `add-comment.js` - Add AI comments for review (defaults to "AIM" author)
 3. User reviews in Word
 4. User applies/rejects as needed
 
 **Never automate acceptance** - always require human review.
 
 **Comments workflow:**
-1. `list_comments.py` - See all comments in document
-2. `add_comment.py` - Add new comments (defaults to "AIM" author)
+1. `list-comments.js` - See all comments in document
+2. `add-comment.js` - Add new comments (defaults to "AIM" author)
 3. Comments appear in Word's review pane
 

@@ -85,10 +85,10 @@ For non-AI video manipulation → `processes/Local Editing.md`
 **Usage:**
 ```bash
 # Generate with automatic extensions
-python3 scripts/generate_video_google.py "prompt" --image input.jpg --extensions 2
+node scripts/generate-video-google.js "prompt" --image input.jpg --extensions 2
 
 # Extend existing video
-python3 scripts/generate_video_google.py "continuation prompt" --video existing.mp4 --extensions 1
+node scripts/generate-video-google.js "continuation prompt" --video existing.mp4 --extensions 1
 ```
 
 
@@ -112,11 +112,11 @@ Only configure API keys for services you have access to. Remove unavailable serv
 
 ## Troubleshooting
 
-**Dependencies not installed:** Install from `requirements.txt` (see Setup section above).
+**Dependencies not installed:** Run `npm install` in the Video Generator directory.
 
 **API errors:** Check the specific process file for troubleshooting steps.
 
-**FFmpeg not found:** MoviePy requires FFmpeg. It auto-downloads on first use via imageio-ffmpeg.
+**FFmpeg not found:** Install FFmpeg with `brew install ffmpeg` (macOS) or `apt install ffmpeg` (Linux).
 
 
 ## Tips for Better Video Prompts
@@ -139,13 +139,13 @@ When user requests a video without providing an image:
 1. **Generate the image first:**
    ```bash
    cd "/pro accelerator/tools/Image Generator"
-   python3 scripts/generate_image_gemini.py "detailed prompt for the scene"
+   node scripts/generate-image-gemini.js "detailed prompt for the scene"
    ```
 
 2. **Use that image for video generation:**
    ```bash
    cd "/pro accelerator/tools/Video Generator"
-   python3 scripts/generate_video_google.py "motion prompt" --image "/pro accelerator/tools/Image Generator/generated_images/[image_file]"
+   node scripts/generate-video-google.js "motion prompt" --image "/pro accelerator/tools/Image Generator/generated_images/[image_file]"
    ```
 
 This two-step approach provides better quality and more control than direct text-to-video.

@@ -6,7 +6,7 @@
 
 ```bash
 cd "/pro accelerator/tools/[Tool Name]"
-python3 scripts/[main_script].py "input"
+node scripts/[main-script].js "input"
 ```
 
 Expected output:
@@ -63,7 +63,7 @@ MODEL_NAME=your_model_here
 
 **Usage:**
 ```bash
-python3 scripts/[script].py "input" --option value
+node scripts/[script].js "input" --option value
 ```
 
 ### [Task Type 2]
@@ -77,7 +77,7 @@ python3 scripts/[script].py "input" --option value
 ### Basic Command
 
 ```bash
-python3 scripts/[script].py "required_arg"
+node scripts/[script].js "required_arg"
 ```
 
 ### Common Tasks
@@ -85,13 +85,13 @@ python3 scripts/[script].py "required_arg"
 #### [Task Name]
 
 ```bash
-python3 scripts/[script].py "input" --option1 value
+node scripts/[script].js "input" --option1 value
 ```
 
 #### [Another Task]
 
 ```bash
-python3 scripts/[script].py "input" --option2
+node scripts/[script].js "input" --option2
 ```
 
 ### Options
@@ -112,11 +112,11 @@ python3 scripts/[script].py "input" --option2
 
 ### Missing Dependencies
 
-**If you see:** `"No module named X"` or `"command not found"`
+**If you see:** `"Cannot find module X"` or `"command not found"`
 
 ```bash
 cd "/pro accelerator/tools/[Tool Name]"
-pip3 install -r requirements.txt
+npm install
 ```
 
 ### Configuration Issues
@@ -155,7 +155,7 @@ pip3 install -r requirements.txt
 9. **Quality review:** Verify against Prompt Author quality checks before finalizing
 
 **Script tool vs Behavior tool:**
-- Script tools = Python/Node scripts with APIs and dependencies (this template)
+- Script tools = Node.js scripts with APIs and dependencies (this template)
 - Behavior tools = Instructions and methodology only
 
 **Pattern reference:** See Image Generator, Video Generator, and Browser Control for working examples.

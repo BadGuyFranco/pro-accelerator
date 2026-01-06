@@ -15,12 +15,12 @@ Verify these environment variables are set in `/memory/Video Generator/.env`:
 **Basic generation:**
 ```bash
 cd "pro accelerator/tools/Video Generator"
-python3 scripts/generate_video_replicate.py "your prompt here"
+node scripts/generate-video-replicate.js "your prompt here"
 ```
 
 **With custom output:**
 ```bash
-python3 scripts/generate_video_replicate.py "your prompt" --output video.mp4
+node scripts/generate-video-replicate.js "your prompt" --output video.mp4
 ```
 
 
@@ -29,7 +29,7 @@ python3 scripts/generate_video_replicate.py "your prompt" --output video.mp4
 Animate a still image into a video:
 
 ```bash
-python3 scripts/generate_video_replicate.py "camera slowly zooms in" --image input.jpg
+node scripts/generate-video-replicate.js "camera slowly zooms in" --image input.jpg
 ```
 
 The prompt describes the motion/action to apply to the image.
@@ -60,7 +60,7 @@ Check the model's Replicate page for specific capabilities (resolution, duration
 
 **Model cold start:** First request may take longer as the model loads
 
-**Import error:** Install dependencies from `requirements.txt` in the Video Generator directory.
+**Import error:** Run `npm install` in the Video Generator directory.
 
 
 ## Output

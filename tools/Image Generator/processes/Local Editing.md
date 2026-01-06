@@ -1,6 +1,6 @@
 # Local Editing - Image Manipulation
 
-Edit images locally using PIL (no AI, no API calls, instant, free).
+Edit images locally using sharp (no AI, no API calls, instant, free).
 
 
 ## When to Use
@@ -25,58 +25,58 @@ Edit images locally using PIL (no AI, no API calls, instant, free).
 
 ```bash
 cd "pro accelerator/tools/Image Generator"
-python3 scripts/local_image_edit.py input.png output.png --resize 1440 810
+node scripts/local-image-edit.js input.png output.png --resize 1440 810
 ```
 
 ### Center Crop
 
 ```bash
-python3 scripts/local_image_edit.py input.png output.png --crop 1000 1000
+node scripts/local-image-edit.js input.png output.png --crop 1000 1000
 ```
 
 ### Grayscale
 
 ```bash
-python3 scripts/local_image_edit.py input.png output.png --grayscale
+node scripts/local-image-edit.js input.png output.png --grayscale
 ```
 
 ### Format Conversion
 
 ```bash
 # PNG to WEBP (smaller file size)
-python3 scripts/local_image_edit.py input.png output.webp --format webp
+node scripts/local-image-edit.js input.png output.webp --format webp
 
 # PNG to JPEG
-python3 scripts/local_image_edit.py input.png output.jpg --format jpg
+node scripts/local-image-edit.js input.png output.jpg --format jpg
 ```
 
 ### Rotate
 
 ```bash
 # Rotate 90° clockwise
-python3 scripts/local_image_edit.py input.png output.png --rotate 90
+node scripts/local-image-edit.js input.png output.png --rotate 90
 ```
 
 ### Adjustments
 
 ```bash
 # Brightness (1.0 = original, >1 = brighter)
-python3 scripts/local_image_edit.py input.png output.png --brightness 1.2
+node scripts/local-image-edit.js input.png output.png --brightness 1.2
 
 # Contrast
-python3 scripts/local_image_edit.py input.png output.png --contrast 1.1
+node scripts/local-image-edit.js input.png output.png --contrast 1.1
 
 # Sharpness
-python3 scripts/local_image_edit.py input.png output.png --sharpness 1.5
+node scripts/local-image-edit.js input.png output.png --sharpness 1.5
 
 # Blur
-python3 scripts/local_image_edit.py input.png output.png --blur 2.0
+node scripts/local-image-edit.js input.png output.png --blur 2.0
 ```
 
 ### Combined Operations
 
 ```bash
-python3 scripts/local_image_edit.py input.png output.png \
+node scripts/local-image-edit.js input.png output.png \
   --resize 1440 810 \
   --grayscale \
   --brightness 1.1 \
@@ -105,7 +105,7 @@ python3 scripts/local_image_edit.py input.png output.png \
 
 **Input file not found:** Verify the file path is correct
 
-**Import error:** Install dependencies from `requirements.txt` in the Image Generator directory.
+**Import error:** Run `npm install` in the Image Generator directory.
 
 
 ## Notes

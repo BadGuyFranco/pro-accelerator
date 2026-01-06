@@ -79,7 +79,7 @@ Only configure API keys for services you have access to. Remove unavailable serv
 
 ## Troubleshooting
 
-**Dependencies not installed:** Install from `requirements.txt` (see Setup section above).
+**Dependencies not installed:** Run `npm install` in the Image Generator directory.
 
 **API errors:** Check the specific process file for troubleshooting steps.
 

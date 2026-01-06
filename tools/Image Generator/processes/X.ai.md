@@ -15,17 +15,17 @@ Verify these environment variables are set in `/memory/Image Generator/.env`:
 **Basic generation:**
 ```bash
 cd "pro accelerator/tools/Image Generator"
-python3 scripts/generate_image_xai.py "your prompt here"
+node scripts/generate-image-xai.js "your prompt here"
 ```
 
 **With custom output:**
 ```bash
-python3 scripts/generate_image_xai.py "your prompt" --output-dir /path/to/folder --output filename.png
+node scripts/generate-image-xai.js "your prompt" --output-dir /path/to/folder --output filename.png
 ```
 
 **Generate multiple images:**
 ```bash
-python3 scripts/generate_image_xai.py "your prompt" --count 3
+node scripts/generate-image-xai.js "your prompt" --count 3
 ```
 
 
@@ -69,7 +69,7 @@ X.ai may revise your prompt before generating. The revised prompt is displayed i
 
 **429 Rate limit:** Wait a moment and retry
 
-**Import error:** Install dependencies from `requirements.txt` in the Image Generator directory.
+**Import error:** Run `npm install` in the Image Generator directory.
 
 
 ## Output
