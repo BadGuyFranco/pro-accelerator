@@ -39,18 +39,22 @@ WHISPER_MODELS = ['tiny', 'base', 'small', 'medium', 'large']
 def get_device():
     """
     Detect the best available device for inference.
-    Priority: CUDA (NVIDIA) > MPS (Apple Silicon) > CPU
+    Priority: CUDA (NVIDIA) > CPU
+    
+    Note: MPS (Apple Silicon) is disabled because Whisper uses sparse tensors
+    which are not fully supported on MPS, causing runtime errors.
     """
     if torch.cuda.is_available():
         device = "cuda"
         device_name = torch.cuda.get_device_name(0)
         print(f"Using GPU: {device_name} (CUDA)")
-    elif torch.backends.mps.is_available():
-        device = "mps"
-        print("Using GPU: Apple Silicon (MPS)")
     else:
         device = "cpu"
-        print("Using CPU (no GPU acceleration available)")
+        # Note: MPS disabled due to sparse tensor compatibility issues
+        if torch.backends.mps.is_available():
+            print("Using CPU (MPS available but disabled due to Whisper compatibility)")
+        else:
+            print("Using CPU")
     return device
 
 
@@ -78,10 +82,12 @@ def transcribe_audio(audio_file_path, model_size='base'):
     # Detect best device
     device = get_device()
     
-    # Determine if we should use FP16 (faster on GPU, not supported on CPU)
-    use_fp16 = device in ["cuda", "mps"]
+    # Determine if we should use FP16 (only reliable on CUDA)
+    use_fp16 = device == "cuda"
     if use_fp16:
         print("Using FP16 (half-precision) for faster inference")
+    else:
+        print("Using FP32 (full precision)")
     
     print(f"\nLoading Whisper model '{model_size}'...")
     print("(First run will download the model - this may take a few minutes)")
