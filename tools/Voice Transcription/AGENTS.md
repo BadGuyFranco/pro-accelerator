@@ -2,17 +2,31 @@
 
 **100% Local Execution. No API Keys Required. Completely Free.**
 
-Transcribe voice recordings and phone calls locally on your machine using OpenAI Whisper.
+Transcribe voice recordings and phone calls locally on your machine using OpenAI Whisper with GPU acceleration.
+
+## Why Python (Not Node.js)
+
+This tool uses Python instead of the standard Node.js stack because:
+
+| | Node.js (@xenova/transformers) | Python (openai-whisper) |
+|---|---|---|
+| GPU Support | None (CPU only) | CUDA + MPS (Apple Silicon) |
+| 60-min audio | ~60+ minutes | ~10 minutes |
+| Speed | 1x real-time | 6-10x real-time |
+
+The Node.js Whisper implementation cannot access GPU acceleration, making it 5-10x slower. For a 2-hour recording, that's the difference between 20 minutes and 3+ hours.
+
+**This exception is documented in** `.cursor/rules/Always Apply.mdc` under "Approved Python Exceptions."
 
 ## Quick Start
 
 ```bash
-node transcribe-audio.js <path_to_audio_file>
+python transcribe_audio.py <path_to_audio_file>
 ```
 
 **With specific model:**
 ```bash
-node transcribe-audio.js recording.m4a --model base
+python transcribe_audio.py recording.m4a --model medium
 ```
 
 **If the command fails,** see "Troubleshooting" section below.
@@ -20,13 +34,13 @@ node transcribe-audio.js recording.m4a --model base
 
 ## Key Features
 
+- **GPU Accelerated:** Automatic detection of CUDA (NVIDIA) or MPS (Apple Silicon)
 - **100% Local & Private:** Transcription runs on your machine (no data sent to the cloud)
 - **Completely Free:** No API costs, no subscriptions, no hidden fees
 - **No API Keys Required:** No account setup, no authentication needed
 - **High-Quality Transcription:** Uses OpenAI's Whisper model running locally
-- **Cursor Integration:** After transcription, use Cursor/Claude for intelligent note-taking
-- **Multiple Format Support:** Works with mp3, mp4, m4a, wav, webm, ogg, flac
-- **Organized Output:** Saves markdown file in the same directory as the audio file
+- **FP16 Inference:** Half-precision for faster GPU processing
+- **Progress Feedback:** Shows audio duration, estimated time, and processing speed
 
 
 ## Usage
@@ -34,7 +48,7 @@ node transcribe-audio.js recording.m4a --model base
 ### Basic Usage
 
 ```bash
-node transcribe-audio.js <path_to_audio_file>
+python transcribe_audio.py <path_to_audio_file>
 ```
 
 ### Model Selection
@@ -43,33 +57,70 @@ Choose your Whisper model size (trade-off between speed and accuracy):
 
 ```bash
 # Fastest, good for quick transcriptions
-node transcribe-audio.js recording.m4a --model tiny
+python transcribe_audio.py recording.m4a --model tiny
 
 # Default - balanced speed and accuracy
-node transcribe-audio.js recording.m4a --model base
+python transcribe_audio.py recording.m4a --model base
 
 # Better accuracy
-node transcribe-audio.js recording.m4a --model small
+python transcribe_audio.py recording.m4a --model small
 
 # High accuracy (recommended for important meetings)
-node transcribe-audio.js recording.m4a --model medium
+python transcribe_audio.py recording.m4a --model medium
+
+# Best accuracy (slow but most precise)
+python transcribe_audio.py recording.m4a --model large
 ```
 
 ### Model Comparison
 
-| Model  | Speed      | Accuracy |
-|--------|------------|----------|
-| tiny   | Fastest    | Good     |
-| base   | Fast       | Better   | (Default)
-| small  | Moderate   | Great    |
-| medium | Slow       | Excellent|
+| Model  | Size   | RAM   | GPU Speed  | Accuracy |
+|--------|--------|-------|------------|----------|
+| tiny   | ~75MB  | ~1GB  | ~30x RT    | Good     |
+| base   | ~140MB | ~1GB  | ~20x RT    | Better   | (Default)
+| small  | ~460MB | ~2GB  | ~10x RT    | Great    |
+| medium | ~1.5GB | ~5GB  | ~5x RT     | Excellent|
+| large  | ~3GB   | ~10GB | ~2x RT     | Best     |
 
-Note: The `large` model is not available in the Node.js version due to ONNX limitations.
+*RT = Real-Time (e.g., 10x RT means 10 min audio in 1 min)*
 
 ### Example
 
 ```bash
-node transcribe-audio.js ~/Downloads/meeting_recording.m4a
+python transcribe_audio.py ~/Downloads/meeting_recording.m4a --model medium
+```
+
+
+## Performance
+
+### GPU vs CPU
+
+| Device | 60-min audio (medium model) |
+|--------|----------------------------|
+| Apple Silicon (MPS) | ~10-15 minutes |
+| NVIDIA GPU (CUDA) | ~5-10 minutes |
+| CPU only | ~60+ minutes |
+
+The script automatically detects and uses the best available device.
+
+### Expected Output
+
+```
+Using GPU: Apple Silicon (MPS)
+Using FP16 (half-precision) for faster inference
+
+Loading Whisper model 'medium'...
+Model loaded in 2.3s
+
+Audio duration: 60.0 minutes
+Estimated processing time: 9.0 minutes
+
+Starting transcription of: meeting.m4a
+Processing...
+
+Transcription completed in 542.1s
+Processing speed: 6.6x real-time
+Total time (including model load): 544.4s
 ```
 
 
@@ -80,17 +131,6 @@ node transcribe-audio.js ~/Downloads/meeting_recording.m4a
 The script generates a transcript file in the same directory as your audio file:
 
 **`[filename]_transcription.txt`** - Full verbatim transcription
-
-Example output structure:
-```
-~/Downloads/
-  meeting_recording.m4a
-  meeting_recording_transcription.txt
-```
-
-### After Transcription
-
-After the script completes, use Cursor/Claude to automatically create a comprehensive summary from the transcription.
 
 ### Transcription File Format
 
@@ -125,89 +165,40 @@ Date: 2025-11-02 14:30:00
 - FLAC (`.flac`)
 
 
-## Performance & Timing
-
-Typical processing times (using `base` model):
-
-- **10-minute audio:** ~2-3 minutes processing
-- **30-minute audio:** ~5-7 minutes processing
-- **60-minute audio:** ~10-15 minutes processing
-
-*Times vary based on CPU/GPU and model size chosen*
-
-
-## Advanced Usage
-
-### Batch Processing Multiple Files
-
-Create a bash script:
-
-```bash
-#!/bin/bash
-for file in /path/to/recordings/*.m4a; do
-    node transcribe-audio.js "$file" --model base
-done
-```
-
-
-## FAQ
-
-**Q: Does this work offline?**  
-A: Yes! After initial model downloads, it works completely offline.
-
-**Q: How accurate is the transcription?**  
-A: Very accurate. Whisper is state-of-the-art. Use `medium` or `large` models for best results.
-
-**Q: Can it handle multiple speakers?**  
-A: Yes, it transcribes all audio. The transcript won't label speakers, but all speech is captured.
-
-**Q: What languages are supported?**  
-A: Whisper supports 99 languages. The script defaults to English but can auto-detect language.
-
-**Q: Is my data sent anywhere?**  
-A: No. Everything runs locally on your machine. Zero data leaves your computer.
-
-
-## Privacy & Security
-
-✅ **100% Private:** All processing happens on your machine  
-✅ **No Cloud Upload:** Your audio never leaves your computer  
-✅ **No Accounts:** No sign-ups or tracking  
-✅ **Open Source:** Uses open-source Whisper model
-
-
 ## Troubleshooting
 
 ### Setup Issues
 
-**Requirements:** Node.js 18+, 2-3GB disk space (dependencies + models), 4GB+ RAM
+**Requirements:** Python 3.8+, 2-3GB disk space (dependencies + models), 4GB+ RAM
 
-**Install dependencies:** Run `npm install` in the Voice Transcription directory.
+**Install dependencies:**
+```bash
+pip install -r requirements.txt
+```
 
-Models download automatically on first use to `~/.cache/huggingface/`
+Models download automatically on first use to `~/.cache/whisper/`
 
 ### Common Errors
 
-**Slow performance:** Use smaller model (`--model tiny` or `--model base`), close other apps
+**"Using CPU" when you have a GPU:**
+- Mac: Ensure macOS 12.3+ and PyTorch 2.0+
+- NVIDIA: Install CUDA toolkit and `pip install torch --index-url https://download.pytorch.org/whl/cu118`
 
-**Unsupported file format:** Convert with `ffmpeg -i input.avi output.mp3`
+**Slow performance:** Use smaller model (`--model base`), ensure GPU is being used
 
-**Poor transcription quality:** Use clear audio, try larger model (`--model medium`)
+**Out of memory:** Use smaller model, close other apps
 
-**Out of memory:** Use smaller model, close other apps, process shorter segments
+**Module not found:** `pip install -r requirements.txt`
 
-**Node not found:** Install Node.js from nodejs.org or use `brew install node` (macOS)
+**PyTorch errors:** `pip install torch torchaudio --upgrade`
 
-**Cannot find module:** Run `npm install` in the Voice Transcription directory
+### Verifying GPU Support
 
-**Model download failed:** Check internet, ensure `~/.cache/` is writable
-
-### System Requirements by Model
-
-| Model | RAM | Disk |
-|-------|-----|------|
-| tiny/base | 4GB | 2GB |
-| medium | 8GB | 5GB |
+```python
+import torch
+print(f"CUDA available: {torch.cuda.is_available()}")
+print(f"MPS available: {torch.backends.mps.is_available()}")
+```
 
 
 ## Cost
