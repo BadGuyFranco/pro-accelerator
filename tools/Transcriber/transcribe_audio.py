@@ -149,6 +149,26 @@ def transcribe_audio(audio_file_path, model_size='base'):
         raise
 
 
+def format_transcription(text):
+    """
+    Format transcription with line breaks for readability.
+    Inserts line breaks after sentence-ending punctuation.
+    
+    Args:
+        text: Raw transcription text
+        
+    Returns:
+        str: Formatted text with line breaks
+    """
+    import re
+    
+    # Insert line breaks after sentence-ending punctuation followed by space
+    # Handles: . ! ? followed by space and capital letter or quote
+    formatted = re.sub(r'([.!?])\s+(?=[A-Z"\'])', r'\1\n\n', text)
+    
+    return formatted
+
+
 def save_outputs(audio_file_path, transcription):
     """
     Save transcription as text file in the same directory as the audio file.
@@ -165,6 +185,9 @@ def save_outputs(audio_file_path, transcription):
     base_name = audio_path.stem
     output_dir = audio_path.parent
     
+    # Format transcription with line breaks for readability
+    formatted_transcription = format_transcription(transcription)
+    
     # Save full transcription as plain text in the same directory
     transcription_file = output_dir / f"{base_name}_transcription.txt"
     with open(transcription_file, 'w', encoding='utf-8') as f:
@@ -172,7 +195,7 @@ def save_outputs(audio_file_path, transcription):
         f.write(f"Audio File: {audio_path.name}\n")
         f.write(f"Date: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
         f.write(f"---\n\n")
-        f.write(transcription)
+        f.write(formatted_transcription)
     
     print(f"\nTranscription saved to: {transcription_file}")
     

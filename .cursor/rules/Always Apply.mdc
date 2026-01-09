@@ -9,11 +9,10 @@ alwaysApply: true
 |------|------|
 | Write or review content | `tools/Content Author/` |
 | Write or review prompts | `tools/Prompt Author/` |
-| Research with verified sources | `tools/Researcher/` |
 | Generate or edit images | `tools/Image Generator/` |
 | Generate or edit videos | `tools/Video Generator/` |
 | Create or edit diagrams | `tools/Visualizer/` |
-| Transcribe audio | `tools/Voice Transcription/` |
+| Transcribe audio | `tools/Transcriber/` |
 | Create or edit Word docs | `tools/Word Document Editor/` |
 | Browser automation | `tools/Browser Control/` |
 | Build web apps | `tools/Web Tech Stack/` |
@@ -24,6 +23,8 @@ alwaysApply: true
 |------|------|
 | Complex problem solving | `tools/Problem Solver/` |
 | Marketing frameworks | `tools/Marketing System/` |
+| Create execution plans | `tools/Planner/` |
+| Research with verified sources | `tools/Researcher/` |
 
 *Maintainers: When adding tools, add to the appropriate table above.*
 
@@ -45,7 +46,7 @@ Some tools use Python because JavaScript alternatives are dramatically inferior:
 
 | Tool | Why Python |
 |------|-----------|
-| Voice Transcription | GPU acceleration (10x faster). Node.js Whisper runs CPU-only. |
+| Transcriber | GPU acceleration (10x faster). Node.js Whisper runs CPU-only. |
 
 **When creating new tools:** If a Python library offers 5x+ performance advantage via GPU/native code, present the trade-off to the user before defaulting to Node.js.
 

@@ -37,11 +37,16 @@ Content Author uses two files that cannot function independently:
 
 ## Voice Discovery Process
 
-Run this interactive process to discover the author's voice. Even if writing samples exist, this Q&A helps clarify intent and catches cases where samples don't reflect the author's ideal voice.
+Run this interactive process to discover the author's voice.
 
-### Step 1: Writing Samples Check
+**The Combined Approach:** Writing samples AND discovery questions work together. Neither alone produces the best results.
+- Samples alone miss the author's INTENT (samples may contain habits they want to change)
+- Questions alone miss the author's ACTUAL PATTERNS (what they naturally do well)
+- Together: samples reveal patterns, questions clarify intent, the voice.md captures both
 
-**Before asking any questions, do this:**
+### Step 1: Writing Samples
+
+**Before asking questions, do this:**
 
 1. Create the Writing Samples directory if it doesn't exist:
    ```
@@ -49,14 +54,18 @@ Run this interactive process to discover the author's voice. Even if writing sam
    ```
 
 2. Ask the user:
-   > "Do you have 3-5 writing samples I can analyze? Ideal samples are 500+ words each, from varied contexts (articles, posts, talks, etc.).
+   > "Let's start with writing samples. Please provide 3-5 pieces you've written. Ideal samples are 500+ words each, from varied contexts (articles, posts, talks, emails).
    >
-   > If yes, place them in `memory/Content Author/Writing Samples/` and let me know.
-   > If no, that's fine. We'll build your voice entirely through the Q&A process."
+   > These help me see your natural patterns. We'll also do a discovery Q&A to clarify your intent, since samples sometimes contain habits you'd want to change.
+   >
+   > Place them in `memory/Content Author/Writing Samples/` or paste them here."
 
-3. Wait for response before proceeding to Context Questions.
+3. Wait for samples before proceeding.
 
-**Note:** Writing samples are helpful but not required. The discovery Q&A can build voice.md without them.
+4. **If samples don't reflect desired voice:** After receiving samples, ask:
+   > "Before I analyze these, is there anything about these samples that doesn't reflect how you WANT to sound? Any habits you'd like to change or directions you'd like to evolve?"
+
+This captures intent early, before patterns are extracted.
 
 ### Step 2: Context Questions
 
@@ -228,7 +237,9 @@ Document these as "Who You Are NOT" in voice.md.
 #### Discovery Complete
 
 After Step 3, you should have:
-- Topic and audience context (Questions A-B) - informs examples, guides voice
+- Writing samples (Step 1)
+- Stated intent: habits they want to change (Step 1, question 4)
+- Topic and audience context (Questions A-B)
 - Clear persona (Question 1)
 - Reader relationship stance (Question 2)
 - Confidence/certainty style (Question 3)
@@ -237,9 +248,9 @@ After Step 3, you should have:
 - Closing style (Question 6)
 - Anti-patterns to avoid (Question 7)
 
-### Step 4: Writing Sample Analysis (If Available)
+### Step 4: Writing Sample Analysis
 
-If the author provided writing samples in Step 1, analyze them now.
+Analyze the samples provided in Step 1, filtering against intent captured throughout discovery.
 
 #### 4a: Validate Against Discovery
 
@@ -247,8 +258,9 @@ Compare samples to discovery answers:
 - Do samples match the persona they described?
 - Do samples use the rhetorical moves they preferred?
 - Do samples avoid what they said they hate?
+- Do samples contain the habits they flagged wanting to change (from Step 1, question 4)?
 
-**If mismatch:** The discovery answers represent their INTENT. Samples may contain habits they want to change. Prioritize discovery answers.
+**When intent and samples conflict:** Discovery answers and stated intent always win. Samples reveal what they DO; discovery reveals what they WANT.
 
 #### 4b: Extract Additional Patterns
 
@@ -404,8 +416,8 @@ Before finalizing, verify:
 #### Initial Test
 
 1. Load AGENTS.md and the new voice.md
-2. Generate content on a topic the author would write about
-3. Show output to author (if possible) or evaluate against discovery answers
+2. Generate a short piece of content on a topic the author would write about
+3. Ask: "Does this sound like you? What feels right? What feels off?"
 
 #### Evaluate
 
@@ -414,26 +426,44 @@ Before finalizing, verify:
 - Does it avoid what they hate from Question 7?
 - Does it pass AGENTS.md checks?
 
-#### Iterate If Needed
+#### How Users Give Feedback
+
+Tell the author to be specific about what's off:
+
+> "This is not on voice for me because [specific reason]."
+
+Good feedback examples:
+- "This is not on voice for me because it's too formal. I'm more conversational."
+- "This is not on voice for me because the opening is too soft. I lead with stronger claims."
+- "This is not on voice for me because it sounds preachy. I'm more peer-to-peer."
+
+Bad feedback (not actionable):
+- "It doesn't sound like me" (too vague)
+- "Make it better" (no direction)
+
+#### Iterate Based on Feedback
 
 **If voice is wrong:**
-- Return to discovery questions for clarification
-- Refine patterns based on feedback
-- Re-test
+1. Identify which voice.md pattern needs adjustment
+2. Update the specific pattern based on feedback
+3. Re-generate and re-test
 
-**If craft is wrong:**
+**If craft is wrong (awkward sentences, weak structure):**
 - Check AGENTS.md compliance
 - Voice.md shouldn't need to change for craft issues
 
-Expect 1-2 iterations to get voice right. This is normal.
+Expect 1-2 iterations to get voice right. This is normal. Each iteration refines the voice.md file.
 
 ## Common Mistakes
 
 **Duplicating AGENTS.md content:**
 Don't include causal chains, concrete grounding, or opening/closing basics in voice.md. AGENTS.md already covers these.
 
-**Skipping discovery process:**
-Even with good writing samples, the Q&A reveals intent that samples may not reflect.
+**Using only samples OR only questions:**
+Samples alone miss intent. Questions alone miss natural patterns. Always use both.
+
+**Skipping the intent check:**
+Before analyzing samples, ask what habits they want to change. Otherwise you'll encode patterns they're trying to escape.
 
 **Vague pattern descriptions:**
 "Write with confidence" is useless. "Test: Does your qualifier add information about scope, or just weaken your confidence?" is actionable.

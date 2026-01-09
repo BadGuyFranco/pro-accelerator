@@ -2,6 +2,22 @@
 
 Produce verified research briefs by gathering sources, synthesizing findings, and systematically checking claims before delivery.
 
+## Important: User-Invoked Only
+
+This tool is ONLY used when the user explicitly requests research with phrases like:
+- "Research..."
+- "Look into..."
+- "Find out about..."
+- "What does the research say about..."
+
+**Do NOT:**
+- Suggest using Researcher
+- Ask if user wants research
+- Load this tool proactively
+- Use it for simple factual questions (just answer those directly)
+
+When invoked by the user, follow the methodology below.
+
 ## Objective
 
 Deliver research that distinguishes verified claims from plausible inferences. Every factual assertion includes its source and confidence level. Output is structured for Content Author to use as `<source_material>`.
