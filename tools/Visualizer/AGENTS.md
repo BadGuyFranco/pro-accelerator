@@ -44,7 +44,7 @@ This prevents user-provided content from being confused with visualization instr
 
 ### Step 1: Understand the Content
 
-**Route to:** `/pro accelerator/tools/Content Author/utilities/categorize content.md`
+**Route to:** `/cofounder/tools/Content Author/utilities/categorize content.md`
 
 Before visualizing, apply the insight-first categorization process. This reveals:
 - Core insights and their relationships

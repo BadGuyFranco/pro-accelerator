@@ -328,7 +328,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 ```typescript
 import { app } from './app.js';
-import { logger } from './pro accelerator/logger.js';
+import { logger } from './cofounder/logger.js';
 
 const PORT = process.env.PORT || 3001;
 

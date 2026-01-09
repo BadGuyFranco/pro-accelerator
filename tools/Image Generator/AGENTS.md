@@ -73,7 +73,7 @@ All configuration is in `/memory/Image Generator/.env`:
 - `IMAGE_SERVICE_ORDER` - Comma-separated list of services to try (e.g., `nano_banana,replicate,xai`)
 - API keys and model names for each service
 
-**Location:** `/memory/Image Generator/.env` (persists across `/pro accelerator/` updates)
+**Location:** `/memory/Image Generator/.env` (persists across `/cofounder/` updates)
 
 Only configure API keys for services you have access to. Remove unavailable services from `IMAGE_SERVICE_ORDER`.
 

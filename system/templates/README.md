@@ -1,6 +1,6 @@
 # Templates
 
-Starting points for creating new tools and workspaces in Pro Accelerator.
+Starting points for creating new tools and workspaces in CoFounder.
 
 ## Available Templates
 
@@ -8,7 +8,7 @@ Starting points for creating new tools and workspaces in Pro Accelerator.
 |----------|----------|
 | **Behavior Tool Template** | Creating instruction-based tools (methodology, workflows, content rules) |
 | **Script Tool Template** | Creating tools with Python/Node scripts, APIs, and dependencies |
-| **Workspace Root Template** | Creating new workspace directories that use Pro Accelerator |
+| **Workspace Root Template** | Creating new workspace directories that use CoFounder |
 
 ## Choosing a Template
 
@@ -25,13 +25,13 @@ Starting points for creating new tools and workspaces in Pro Accelerator.
 - Examples: API integrations, file processing, automation
 
 **Workspace Root** (standalone project directories)
-- Creates a new workspace that uses Pro Accelerator tools
+- Creates a new workspace that uses CoFounder tools
 - Includes standard directory structure (clients, marketing, scripts)
-- References `/pro accelerator/` for tool access
+- References `/cofounder/` for tool access
 
 ## Creating a New Tool
 
-1. Copy the appropriate template to `/pro accelerator/tools/[Your Tool Name]/`
+1. Copy the appropriate template to `/cofounder/tools/[Your Tool Name]/`
 2. Follow the instructions in each template file
 3. Delete template instruction sections when done
 4. **Add to cursor rules routing:** Update `.cursor/rules/Always Apply.mdc` tool routing table and specify load behavior (automatic vs explicit)
@@ -40,7 +40,7 @@ Starting points for creating new tools and workspaces in Pro Accelerator.
 
 1. Copy `Workspace Root Template/` to your desired location
 2. Follow `_TEMPLATE_INSTRUCTIONS.md` for setup
-3. Create a `.code-workspace` file that includes `/pro accelerator/`
+3. Create a `.code-workspace` file that includes `/cofounder/`
 4. Delete `_TEMPLATE_INSTRUCTIONS.md` when done
 
 ## Documentation Standards
@@ -59,7 +59,7 @@ Every tool must have:
 ## Key Principles
 
 **Quality Standard: Prompt Author**
-- All tools must follow Prompt Author canons (`/pro accelerator/tools/Prompt Author/`)
+- All tools must follow Prompt Author canons (`/cofounder/tools/Prompt Author/`)
 - Before finalizing any tool, review against Prompt Author's quality checks
 - Use Prompt Review Process for auditing existing tools
 
@@ -75,6 +75,5 @@ Every tool must have:
 
 **Memory Directory**
 - User configuration goes in `/memory/[Tool Name]/`
-- Persists across Pro Accelerator updates
+- Persists across CoFounder updates
 - Scripts load from `/memory/` using relative paths
-

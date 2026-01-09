@@ -5,7 +5,7 @@
 ## Quick Start
 
 ```bash
-cd "/pro accelerator/tools/[Tool Name]"
+cd "/cofounder/tools/[Tool Name]"
 node scripts/[main-script].js "input"
 ```
 
@@ -42,7 +42,7 @@ MODEL_NAME=your_model_here
 [SERVICE]_ORDER=service1,service2
 ```
 
-**Location:** `/memory/[Tool Name]/.env` (persists across `/pro accelerator/` updates)
+**Location:** `/memory/[Tool Name]/.env` (persists across `/cofounder/` updates)
 
 **All configuration is required.** Scripts will fail with clear errors if any required variables are missing.
 
@@ -115,7 +115,7 @@ node scripts/[script].js "input" --option2
 **If you see:** `"Cannot find module X"` or `"command not found"`
 
 ```bash
-cd "/pro accelerator/tools/[Tool Name]"
+cd "/cofounder/tools/[Tool Name]"
 npm install
 ```
 
@@ -160,7 +160,7 @@ npm install
 
 **Pattern reference:** See Image Generator, Video Generator, and Browser Control for working examples.
 
-**Quality standard:** `/pro accelerator/tools/Prompt Author/AGENTS.md`
+**Quality standard:** `/cofounder/tools/Prompt Author/AGENTS.md`
 
 **Delete this section when done.**
 

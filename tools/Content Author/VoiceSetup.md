@@ -19,7 +19,7 @@ Content Author uses two files that cannot function independently:
 
 | File | Contains | Location |
 |------|----------|----------|
-| AGENTS.md | Universal craft rules (voice-agnostic) | `/pro accelerator/tools/Content Author/` |
+| AGENTS.md | Universal craft rules (voice-agnostic) | `/cofounder/tools/Content Author/` |
 | voice.md | This author's specific voice | `/memory/Content Author/` |
 
 **Segmentation principle:** If guidance applies to ANY good writer, it belongs in AGENTS.md. If it's specific to THIS author's style, it belongs in voice.md.

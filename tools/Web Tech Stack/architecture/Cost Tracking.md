@@ -392,7 +392,7 @@ export class EmailService {
 // modules/cost-tracking/cost-tracking.router.ts
 
 import { Router } from 'express';
-import { getTenantId } from '../../pro accelerator/tenant';
+import { getTenantId } from '../../cofounder/tenant';
 import { CostTrackingService } from './cost-tracking.service';
 
 const router = Router();

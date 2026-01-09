@@ -14,7 +14,7 @@ Verify these environment variables are set in `/memory/Image Generator/.env`:
 
 **Basic generation:**
 ```bash
-cd "pro accelerator/tools/Image Generator"
+cd "cofounder/tools/Image Generator"
 node scripts/generate-image-gemini.js "your prompt here"
 ```
 

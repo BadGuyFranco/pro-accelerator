@@ -23,7 +23,7 @@ This library uses **XML parsing** for maximum stability. Word documents (.docx) 
 ### Verify Installation
 
 ```bash
-cd "/pro accelerator/tools/Word Document Editor"
+cd "/cofounder/tools/Word Document Editor"
 npm list
 ```
 
@@ -36,7 +36,7 @@ Expected packages:
 ### Install Dependencies
 
 ```bash
-cd "/pro accelerator/tools/Word Document Editor"
+cd "/cofounder/tools/Word Document Editor"
 npm install
 ```
 

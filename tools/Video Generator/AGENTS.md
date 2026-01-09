@@ -48,7 +48,7 @@ For non-AI video manipulation → `processes/Local Editing.md`
 **When:** User requests a new video from a text prompt.
 
 **If no image is provided:**
-1. **First generate an image** using Image Generator (`/pro accelerator/tools/Image Generator/`)
+1. **First generate an image** using Image Generator (`/cofounder/tools/Image Generator/`)
 2. Use that generated image as the starting frame for the video
 3. This ensures higher quality and more control over the video content
 
@@ -106,7 +106,7 @@ All configuration is in `/memory/Video Generator/.env`:
 - `VIDEO_SERVICE_ORDER` - Comma-separated list of services to try (e.g., `google_veo,replicate`)
 - API keys and model names for each service
 
-**Location:** `/memory/Video Generator/.env` (persists across `/pro accelerator/` updates)
+**Location:** `/memory/Video Generator/.env` (persists across `/cofounder/` updates)
 
 Only configure API keys for services you have access to. Remove unavailable services from `VIDEO_SERVICE_ORDER`.
 
@@ -138,14 +138,14 @@ When user requests a video without providing an image:
 
 1. **Generate the image first:**
    ```bash
-   cd "/pro accelerator/tools/Image Generator"
+   cd "/cofounder/tools/Image Generator"
    node scripts/generate-image-gemini.js "detailed prompt for the scene"
    ```
 
 2. **Use that image for video generation:**
    ```bash
-   cd "/pro accelerator/tools/Video Generator"
-   node scripts/generate-video-google.js "motion prompt" --image "/pro accelerator/tools/Image Generator/generated_images/[image_file]"
+   cd "/cofounder/tools/Video Generator"
+   node scripts/generate-video-google.js "motion prompt" --image "/cofounder/tools/Image Generator/generated_images/[image_file]"
    ```
 
 This two-step approach provides better quality and more control than direct text-to-video.

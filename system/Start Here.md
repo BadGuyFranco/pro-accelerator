@@ -16,7 +16,7 @@ Copy and paste the following prompt into Cursor's chat (Cmd+L or Ctrl+L):
 **COPY THIS PROMPT:**
 
 ```
-I'm doing my first-run setup for Pro Accelerator. Help me complete the full setup process.
+I'm doing my first-run setup for CoFounder. Help me complete the full setup process.
 
 ## Step 0: System Check
 
@@ -26,18 +26,18 @@ Before we begin, verify my system is ready:
 
 ## Step 1: Create Folder Structure
 
-Create these folders as SIBLINGS to /pro accelerator/ (not inside it):
+Create these folders as SIBLINGS to /cofounder/ (not inside it):
 
 1. **/memory/** - My personal configuration (voice settings, API keys)
 2. **/[my name]/** - Ask me for my name, then create this as my content workspace
 3. **/workspaces/** - Where workspace files are saved
 
-CRITICAL PERMISSION CHECK: If you cannot create folders at the same level as /pro accelerator/, STOP immediately. Tell me: "I don't have permission to create folders here. Let's fix this first." Then walk me through granting folder permissions or creating the folders manually.
+CRITICAL PERMISSION CHECK: If you cannot create folders at the same level as /cofounder/, STOP immediately. Tell me: "I don't have permission to create folders here. Let's fix this first." Then walk me through granting folder permissions or creating the folders manually.
 
-DO NOT create any of these folders inside /pro accelerator/. They must all be siblings.
+DO NOT create any of these folders inside /cofounder/. They must all be siblings.
 
 Verify all four folders exist before proceeding:
-- /pro accelerator/ (already exists)
+- /cofounder/ (already exists)
 - /memory/ (just created)
 - /[my name]/ (just created)
 - /workspaces/ (just created)
@@ -66,7 +66,7 @@ In /workspaces/, create a file named `[my name].code-workspace` with this struct
 
 {
   "folders": [
-    { "path": "../pro accelerator" },
+    { "path": "../cofounder" },
     { "path": "../memory" },
     { "path": "../[my name]" }
   ]
@@ -76,7 +76,7 @@ Replace [my name] with my actual name. Do NOT include the workspaces folder itse
 
 ## Step 5: Voice Discovery
 
-Load /pro accelerator/tools/Content Author/VoiceSetup.md and follow its complete instructions to create my voice profile.
+Load /cofounder/tools/Content Author/VoiceSetup.md and follow its complete instructions to create my voice profile.
 
 Take it one step at a time. Explain WHY each step matters before asking me to do it.
 ```
@@ -87,12 +87,12 @@ Take it one step at a time. Explain WHY each step matters before asking me to do
 
 | Folder | Purpose | Updates? |
 |--------|---------|----------|
-| `/pro accelerator/` | Shared tools and templates. Read-only. | Yes, via git pull |
+| `/cofounder/` | Shared tools and templates. Read-only. | Yes, via git pull |
 | `/memory/` | YOUR personal config: voice, API keys, custom tools | Never overwritten |
 | `/[your name]/` | YOUR content workspace | Never overwritten |
 | `/workspaces/` | Workspace files that open folder combinations | Never overwritten |
 
-**The separation matters:** When Pro Accelerator gets updates, your personal settings and content stay untouched.
+**The separation matters:** When CoFounder gets updates, your personal settings and content stay untouched.
 
 ## After Setup
 
@@ -100,7 +100,7 @@ Your folder structure will look like:
 
 ```
 [Parent Folder]/
-├── pro accelerator/
+├── cofounder/
 │   ├── tools/
 │   │   ├── Content Author/
 │   │   ├── Image Generator/
@@ -126,7 +126,7 @@ Your folder structure will look like:
 
 **Mac:**
 1. Open Finder
-2. Navigate to the folder containing `pro accelerator`
+2. Navigate to the folder containing `cofounder`
 3. Right-click > Get Info
 4. At the bottom, click the lock icon and enter your password
 5. Under "Sharing & Permissions," ensure your user has "Read & Write"
@@ -139,10 +139,10 @@ Press `Cmd+E` (Mac) or `Ctrl+E` (Windows) to toggle the explorer panel.
 
 ## Getting Updates
 
-Pro Accelerator improves over time. To get updates:
+CoFounder improves over time. To get updates:
 
 ```bash
-cd /path/to/pro-accelerator
+cd /path/to/cofounder
 git pull
 ```
 

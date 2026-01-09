@@ -258,7 +258,7 @@ export class ContactsService {
 ```typescript
 // modules/contacts/contacts.router.ts
 import { Router } from 'express';
-import { getTenantId, getContext } from '../../pro accelerator/tenant';
+import { getTenantId, getContext } from '../../cofounder/tenant';
 import { ContactsService } from './contacts.service';
 
 const router = Router();

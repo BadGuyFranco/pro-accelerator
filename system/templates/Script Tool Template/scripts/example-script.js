@@ -36,7 +36,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 // Navigate from script location to memory directory
-// Path: /pro accelerator/tools/[Tool Name]/scripts/ -> /memory/[Tool Name]/
+// Path: /cofounder/tools/[Tool Name]/scripts/ -> /memory/[Tool Name]/
 const memoryEnvPath = resolve(__dirname, '../../../../memory/[Tool Name]/.env');
 
 if (existsSync(memoryEnvPath)) {
@@ -200,7 +200,7 @@ process.exit(exitCode);
  * 6. Delete this instructions section
  *
  * Path calculation for /memory/:
- * - Scripts at: /pro accelerator/tools/[Tool Name]/scripts/
+ * - Scripts at: /cofounder/tools/[Tool Name]/scripts/
  * - Memory at: /memory/[Tool Name]/
  * - Relative: ../../../../memory/[Tool Name]/.env
  */

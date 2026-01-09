@@ -11,7 +11,7 @@ Run `npm install` in the Video Generator directory. FFmpeg is bundled automatica
 ## Basic Usage
 
 ```bash
-cd "pro accelerator/tools/Video Generator"
+cd "cofounder/tools/Video Generator"
 node scripts/local-video-edit.js input.mp4 output.mp4 [options]
 ```
 

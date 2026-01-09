@@ -36,9 +36,9 @@ This file lives in `/memory/Content Author/` and is author-specific.
 
 | File | Purpose | Location |
 |------|---------|----------|
-| AGENTS.md | Universal craft rules, enforcement mechanisms | `/pro accelerator/tools/Content Author/` |
+| AGENTS.md | Universal craft rules, enforcement mechanisms | `/cofounder/tools/Content Author/` |
 | voice.md | Persona-specific patterns, examples, verification | `/memory/Content Author/` |
-| VoiceSetup.md | Setup guide for creating voice.md | `/pro accelerator/tools/Content Author/` |
+| VoiceSetup.md | Setup guide for creating voice.md | `/cofounder/tools/Content Author/` |
 
 ### Format Files
 

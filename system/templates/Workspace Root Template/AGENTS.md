@@ -6,21 +6,21 @@
 
 This workspace has multiple root directories:
 
-- **`/pro accelerator/`** - Shared tools and libraries (read instructions from here)
+- **`/cofounder/`** - Shared tools and libraries (read instructions from here)
 - **`/[Workspace Name]/`** - Active workspace (your working directory)
 
-**Important:** `/pro accelerator/` contains the shared tool library. See `/pro accelerator/AGENTS.md` for tool routing and `/pro accelerator/README.md` for an overview.
+**Important:** `/cofounder/` contains the shared tool library. See `/cofounder/AGENTS.md` for tool routing and `/cofounder/README.md` for an overview.
 
 ## Available Tools
 
-For the full list of available tools and when to use them, see `/pro accelerator/AGENTS.md`.
+For the full list of available tools and when to use them, see `/cofounder/AGENTS.md`.
 
 Common tools you may need:
-- **Content Author** - Writing content (load `/pro accelerator/tools/Content Author/AGENTS.md`)
-- **Image Generator** - Creating images (load `/pro accelerator/tools/Image Generator/AGENTS.md`)
-- **Visualizer** - Creating diagrams (load `/pro accelerator/tools/Visualizer/AGENTS.md`)
+- **Content Author** - Writing content (load `/cofounder/tools/Content Author/AGENTS.md`)
+- **Image Generator** - Creating images (load `/cofounder/tools/Image Generator/AGENTS.md`)
+- **Visualizer** - Creating diagrams (load `/cofounder/tools/Visualizer/AGENTS.md`)
 
-**Single Source of Truth:** Tool instructions live in `/pro accelerator/`. Do not duplicate them here. Reference and load them when needed.
+**Single Source of Truth:** Tool instructions live in `/cofounder/`. Do not duplicate them here. Reference and load them when needed.
 
 ## Workspace Rules
 
@@ -28,7 +28,7 @@ Common tools you may need:
 - `/[Workspace Name]/` - All content creation and modifications happen here
 
 **Read-Only (unless explicitly instructed):**
-- `/pro accelerator/` - Shared library; do not modify
+- `/cofounder/` - Shared library; do not modify
 
 ## Directory Structure
 
@@ -103,7 +103,7 @@ Every deliverable must:
 To begin work in this workspace:
 
 1. Review this AGENTS.md file
-2. Check `/pro accelerator/AGENTS.md` for available tools
+2. Check `/cofounder/AGENTS.md` for available tools
 3. [Workspace-specific first step]
 4. [Next step]
 
@@ -119,7 +119,7 @@ To begin work in this workspace:
 5. Remove sections that don't apply
 
 **Single Source of Truth reminder:**
-- Tool instructions live in `/pro accelerator/tools/[Tool]/AGENTS.md`
+- Tool instructions live in `/cofounder/tools/[Tool]/AGENTS.md`
 - Reference them, don't duplicate them
 - This file defines workspace context, not tool behavior
 

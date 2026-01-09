@@ -9,7 +9,7 @@ AI agents follow **AGENTS.md** for complete workflow instructions.
 ## Documentation
 
 - **AGENTS.md** - Complete instructions for AI agents
-- **pro accelerator/AGENTS.md** - Available tools and routing
+- **cofounder/AGENTS.md** - Available tools and routing
 
 ## Structure
 

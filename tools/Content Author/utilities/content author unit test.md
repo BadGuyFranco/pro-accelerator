@@ -13,7 +13,7 @@ Validate the Content Author library through two-layered testing:
 
 ### Do Not Modify Source Documents
 
-This test evaluates the Content Author library. Don't modify any files in `/pro accelerator/tools/Content Author/` during testing.
+This test evaluates the Content Author library. Don't modify any files in `/cofounder/tools/Content Author/` during testing.
 
 Save all recommendations for Phase 5. Only modify source documents if explicitly instructed as a separate task.
 
@@ -43,7 +43,7 @@ This test follows a six-phase process:
 4. **Phase 4: Output Quality** - Evaluate sample content using Content Author's quality checks
 5. **Phase 5: Final Assessment** - Synthesize findings and provide recommendations
 
-**Critical:** Load `/pro accelerator/tools/Prompt Author/AGENTS.md` before starting Phase 2. Follow its **Prompt Review Process** systematically for each file.
+**Critical:** Load `/cofounder/tools/Prompt Author/AGENTS.md` before starting Phase 2. Follow its **Prompt Review Process** systematically for each file.
 
 
 ## Test Protocol
@@ -111,7 +111,7 @@ Read the complete Content Author library:
 
 ### Phase 2: Evaluate Instruction Quality (Using Prompt Author)
 
-**Reference:** Load `/pro accelerator/tools/Prompt Author/AGENTS.md` and follow its **Prompt Review Process**.
+**Reference:** Load `/cofounder/tools/Prompt Author/AGENTS.md` and follow its **Prompt Review Process**.
 
 For each major instruction file in Content Author, conduct systematic review following Prompt Author methodology:
 

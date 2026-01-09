@@ -452,7 +452,7 @@ export function AIAssistantTrigger(): JSX.Element {
 // modules/ai-assistant/ai-assistant.router.ts
 import { Router } from 'express';
 import { z } from 'zod';
-import { getTenantId, getContext } from '../../pro accelerator/tenant';
+import { getTenantId, getContext } from '../../cofounder/tenant';
 import { AIAssistantService } from './ai-assistant.service';
 
 const router = Router();

@@ -94,7 +94,7 @@ This prevents user-provided content from being confused with tool instructions.
 
 **Pattern reference:** See Content Author, Problem Solver, and Prompt Author for working examples of behavior tools.
 
-**Quality standard:** `/pro accelerator/tools/Prompt Author/AGENTS.md`
+**Quality standard:** `/cofounder/tools/Prompt Author/AGENTS.md`
 
 **Delete this section when done.**
 

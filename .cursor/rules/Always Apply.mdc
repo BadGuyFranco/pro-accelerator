@@ -94,13 +94,13 @@ Follow my lead when:
 
 **When I question your recommendation:** Don't auto-defer. Verify: Did I provide new context, identify a flaw, or explain a trade-off? If not, restate your position. Defer only when genuinely addressed.
 
-# /pro accelerator/ is Read-Only (for most users)
+# /cofounder/ is Read-Only (for most users)
 
-Treat `/pro accelerator/` as read-only. Do not modify; your changes would be lost on updates.
+Treat `/cofounder/` as read-only. Do not modify; your changes would be lost on updates.
 
-**Exception for maintainers:** If user asks to modify `/pro accelerator/` tools or templates, proceed. Maintainers have push access.
+**Exception for maintainers:** If user asks to modify `/cofounder/` tools or templates, proceed. Maintainers have push access.
 
-**Templates:** See `/pro accelerator/system/templates/README.md` for patterns when creating tools.
+**Templates:** See `/cofounder/system/templates/README.md` for patterns when creating tools.
 
 # Memory Directory
 

@@ -4,7 +4,7 @@ AI agent routing for the shared tools library.
 
 ## First Time Setup
 
-New users: Follow `/pro accelerator/system/Start Here.md`
+New users: Follow `/cofounder/system/Start Here.md`
 
 ## Structure
 

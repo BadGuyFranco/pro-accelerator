@@ -1,6 +1,6 @@
 # Workspace Root Template - Setup Instructions
 
-This template provides the standard structure for creating new workspace roots that use the Pro Accelerator shared library.
+This template provides the standard structure for creating new workspace roots that use the CoFounder shared library.
 
 ## Using This Template
 
@@ -22,7 +22,7 @@ Replace all `[placeholders]` with workspace-specific information:
 - `[Workflows]` - Your actual work processes
 - `[Quality Standards]` - Standards for deliverables
 
-**Key principle:** Reference `/pro accelerator/` tools, don't duplicate their instructions.
+**Key principle:** Reference `/cofounder/` tools, don't duplicate their instructions.
 
 ### 3. Customize README.md
 
@@ -89,7 +89,7 @@ Create a `.code-workspace` file in your Cursor workspaces location:
 {
   "folders": [
     {
-      "path": "../pro accelerator"
+      "path": "../cofounder"
     },
     {
       "path": "../../Path/To/Your Workspace"
@@ -99,7 +99,7 @@ Create a `.code-workspace` file in your Cursor workspaces location:
 }
 ```
 
-**Note:** `/pro accelerator/` should always be first so its AGENTS.md is discovered.
+**Note:** `/cofounder/` should always be first so its AGENTS.md is discovered.
 
 ### 6. Delete This File
 
@@ -128,9 +128,9 @@ Workspace Root Template/
 
 **Critical:** This template follows the single source of truth principle.
 
-- Tool instructions live in `/pro accelerator/tools/[Tool]/AGENTS.md`
+- Tool instructions live in `/cofounder/tools/[Tool]/AGENTS.md`
 - Workspace AGENTS.md references tools, doesn't duplicate their instructions
-- When tools update in `/pro accelerator/`, workspaces automatically get the updates
+- When tools update in `/cofounder/`, workspaces automatically get the updates
 
 **Wrong approach:**
 ```markdown
@@ -141,6 +141,6 @@ Workspace Root Template/
 **Correct approach:**
 ```markdown
 ## Content Writing
-For content creation, load `/pro accelerator/tools/Content Author/AGENTS.md`
+For content creation, load `/cofounder/tools/Content Author/AGENTS.md`
 ```
 

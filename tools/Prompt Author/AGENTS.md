@@ -134,9 +134,9 @@ Include in prompts: "If the request is ambiguous, ask for clarification before p
 
 ### AGENTS.md (Tool Documentation)
 
-**Pattern reference:** `/pro accelerator/system/templates/Behavior Tool Template/`
+**Pattern reference:** `/cofounder/system/templates/Behavior Tool Template/`
 
-**Where to create:** User tools go in `/memory/my tools/[Tool Name]/`, not in `/pro accelerator/`.
+**Where to create:** User tools go in `/memory/my tools/[Tool Name]/`, not in `/cofounder/`.
 
 ### Library Components
 

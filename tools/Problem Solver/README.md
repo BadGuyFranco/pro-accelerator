@@ -7,7 +7,7 @@ A structured approach for deep thinking and comprehensive problem solving when t
 When you need deep thinking or comprehensive problem solving, reference the Problem Solver library:
 
 ```
-/pro accelerator/tools/Problem Solver/AGENTS.md
+/cofounder/tools/Problem Solver/AGENTS.md
 ```
 
 **Important:** Before using Problem Solver, ask the user if they want to engage the deep thinking process.

@@ -14,7 +14,7 @@ Verify these environment variables are set in `/memory/Video Generator/.env`:
 
 **Basic generation:**
 ```bash
-cd "pro accelerator/tools/Video Generator"
+cd "cofounder/tools/Video Generator"
 node scripts/generate-video-replicate.js "your prompt here"
 ```
 

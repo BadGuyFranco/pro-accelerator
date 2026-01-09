@@ -1,9 +1,9 @@
-# Pro Accelerator
+# CoFounder
 
 AI workflows for professionals. The fast track to get there.
 
 > **License:** This repository is proprietary. See [LICENSE](LICENSE) for terms.  
-> Access requires completing a [Pro Accelerator course](https://firststrategy.ai).
+> Access requires completing a [CoFounder course](https://firststrategy.ai).
 
 ## Getting Started
 
@@ -25,10 +25,9 @@ See `AGENTS.md` for the full tool list and routing guide.
 ## Structure
 
 ```
-/pro accelerator/
+/cofounder/
 ├── tools/         # AI-powered libraries
 ├── system/        # Setup and maintenance
 ├── memory/        # Your personal config (gitignored)
 └── [your name]/   # Your content workspace (created during setup)
 ```
-

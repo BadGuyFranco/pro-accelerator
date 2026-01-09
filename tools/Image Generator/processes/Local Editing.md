@@ -24,7 +24,7 @@ Edit images locally using sharp (no AI, no API calls, instant, free).
 ### Resize
 
 ```bash
-cd "pro accelerator/tools/Image Generator"
+cd "cofounder/tools/Image Generator"
 node scripts/local-image-edit.js input.png output.png --resize 1440 810
 ```
 
