@@ -140,27 +140,9 @@ npm install
 - [Tip 3 for better results]
 
 
-## Template Instructions (DELETE WHEN DONE)
-
-**When filling out this template:**
-
-1. Replace all `[placeholders]` with your actual values
-2. Update Quick Start with a real working command
-3. Update Configuration with your actual env vars
-4. Remove "Routing" section if tool doesn't route to multiple processes
-5. Remove "Available Services" if not applicable
-6. Add real troubleshooting based on testing
-7. Be specific in Tips based on actual usage
-8. **Update cursor rules:** Add to routing table in `.cursor/rules/Always Apply.mdc`
-9. **Quality review:** Verify against Prompt Author quality checks before finalizing
-
-**Script tool vs Behavior tool:**
-- Script tools = Node.js scripts with APIs and dependencies (this template)
-- Behavior tools = Instructions and methodology only
-
-**Pattern reference:** See Image Generator, Video Generator, and Browser Control for working examples.
-
-**Quality standard:** `/cofounder/tools/Prompt Author/AGENTS.md`
-
-**Delete this section when done.**
+<!-- 
+TEMPLATE: Replace all [placeholders] with your content, then delete this comment.
+Remove sections marked "if applicable" that don't apply to your tool.
+See .cursor/rules/Tool Development.mdc for required sections and quality standards.
+-->
 

@@ -75,26 +75,8 @@ This prevents user-provided content from being confused with tool instructions.
 - [Limitation 2]
 
 
-## Template Instructions (DELETE WHEN DONE)
-
-**When filling out this template:**
-
-1. Replace all `[placeholders]` with your actual content
-2. Define clear, evaluable success criteria in Objective
-3. Make Quality Checks verifiable (can you answer yes/no?)
-4. Customize XML tags for your specific inputs
-5. Structure main sections around what your tool actually does
-6. Include Limitations to set proper expectations
-7. **Update cursor rules:** Add to routing table in `.cursor/rules/Always Apply.mdc`
-8. **Quality review:** Verify against Prompt Author quality checks before finalizing
-
-**Behavior tools vs Script tools:**
-- Behavior tools = Instructions and methodology (this template)
-- Script tools = Python/Node scripts with APIs and dependencies
-
-**Pattern reference:** See Content Author, Problem Solver, and Prompt Author for working examples of behavior tools.
-
-**Quality standard:** `/cofounder/tools/Prompt Author/AGENTS.md`
-
-**Delete this section when done.**
+<!-- 
+TEMPLATE: Replace all [placeholders] with your content, then delete this comment.
+See .cursor/rules/Tool Development.mdc for required sections and quality standards.
+-->
 

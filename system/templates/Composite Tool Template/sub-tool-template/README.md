@@ -1,6 +1,6 @@
-# [Tool Name]
+# [Sub-tool Name]
 
-[One-sentence description of what this tool does]
+[One-sentence description]
 
 ## Documentation
 
@@ -14,7 +14,4 @@
 
 ## Common Use Cases
 
-[2-3 sentences describing when someone would use this tool]
-
-<!-- TEMPLATE: Replace [placeholders], then delete this comment. -->
-
+[1-2 sentences describing when to use this specific sub-tool]

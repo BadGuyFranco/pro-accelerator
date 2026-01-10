@@ -1,0 +1,43 @@
+---
+description: Detailed file versioning workflows and terminal commands for archive access
+alwaysApply: false
+---
+
+# File Versioning Details
+
+## Archive Process
+
+1. Check if `zArchive/` exists in parent directory; create if not
+2. Use terminal to check existing versions for today (cursorignore blocks normal access)
+3. Copy to `zArchive/YY-MM-DD V[n] - original name`
+4. Tell user what was archived, then proceed
+
+**Version numbering:** Resets each day. If V1 exists today, use V2.
+
+## Terminal Commands
+
+Google Drive paths require `required_permissions: ["all"]`
+
+```bash
+ls -la "path/to/zArchive/"                              # List archives
+cat "path/to/zArchive/YY-MM-DD V1 - file.md"            # Read archived file
+cp "path/to/file.md" "path/to/zArchive/YY-MM-DD V1 - file.md"       # Archive file
+cp -r "path/to/dir" "path/to/zArchive/YY-MM-DD V1 - dir"            # Archive directory
+```
+
+## Review and Restore
+
+**Review:** List zArchive contents, present options, show requested version.
+
+**Restore:** Archive current version first (safety net), then apply archived content.
+
+## Example
+
+```
+project/
+├── Strategy.md
+└── zArchive/
+    ├── 26-01-08 V1 - Strategy.md
+    ├── 26-01-10 V1 - Strategy.md
+    └── 26-01-10 V2 - Strategy.md   # Second archive same day
+```

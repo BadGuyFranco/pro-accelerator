@@ -1,0 +1,16 @@
+{
+  "name": "documentor-google-workspace",
+  "version": "1.0.0",
+  "description": "Google Docs, Sheets, and Slides operations via Google APIs",
+  "type": "module",
+  "scripts": {
+    "auth": "node scripts/auth.js",
+    "docs": "node scripts/docs.js",
+    "sheets": "node scripts/sheets.js",
+    "slides": "node scripts/slides.js"
+  },
+  "dependencies": {
+    "googleapis": "^140.0.0",
+    "dotenv": "^16.0.0"
+  }
+}

@@ -4,20 +4,17 @@
 
 ## Documentation
 
-- **AGENTS.md** - Complete instructions for AI agents (includes installation and usage)
+- **AGENTS.md** - Complete instructions for AI agents
 
 ## Key Features
 
-- [Feature 1] - [Brief description]
-- [Feature 2] - [Brief description]
-- [Feature 3] - [Brief description]
+- **[Feature 1]** - [Brief description]
+- **[Feature 2]** - [Brief description]
+- **[Feature 3]** - [Brief description]
 
 ## Common Use Cases
 
 [2-3 sentences describing when someone would use this tool]
 
-
-**Remember:**
-- **README.md** = Brief human overview (assumes already installed)
-- **AGENTS.md** = Complete AI instructions (includes dependency verification, installation, usage, troubleshooting)
+<!-- TEMPLATE: Replace [placeholders], then delete this comment. -->
 

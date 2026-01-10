@@ -1,0 +1,17 @@
+# Local Generator Requirements
+# Node.js dependencies are in package.json
+
+# System Dependencies
+# -------------------
+
+# pandoc - Universal document converter (required for convert.js)
+# Used for: HTML → markdown, epub, latex, etc.
+# Install: brew install pandoc (macOS) or https://pandoc.org/installing.html
+pandoc>=3.0
+
+# Node.js
+node>=18.0
+
+# Chromium (auto-installed by puppeteer)
+# Required for: PDF generation
+# Note: ~300MB download on first npm install
